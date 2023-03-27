@@ -1,0 +1,71 @@
+@extends('admin.layout.index')
+
+@section('title')
+    Colleges
+@endsection
+
+@section('content')
+
+<div class="card">
+
+    <table class="table datatable-save-state">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>College Name</th>
+                <th>Principal Name</th>
+                <th>Year of Establishment</th>
+                <th>Verified</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($colleges  as $key => $college)
+            <tr>
+                <td>{{$key+1}}</td>
+                <td>{{$college->name}}</td>
+                <td>{{$college->email}}</td>
+                <td>{{@$college->collegeProfile->college_name}}</td>
+                <td>{{@$college->collegeProfile->principal_name}}</td>
+                <td>{{@$college->collegeProfile->year_of_establishment}}</td>
+                <td>
+                    @if($college->is_verified)
+                        <span class="badge badge-success">Verified</span>
+                    @else
+                        <span class="badge badge-danger">Not Verified</span>
+                    @endif
+                </td>
+                <td>
+                    @if($college->is_active)
+                        <span class="badge badge-success">Active</span>
+                    @else
+                        <span class="badge badge-danger">Pending</span>
+                    @endif
+                </td>
+                
+                <td>
+                    @if($college->is_verified)
+                        <a href="{{route('admin.user.revert_verification',$college->id)}}" class="btn btn-danger btn-sm">Revert Verification</a>
+                    @else 
+                        <a href="{{route('admin.user.verified',$college->id)}}" class="btn btn-info btn-sm">Verify</a>
+                    @endif
+                </td>
+                <td>
+                    @if($college->is_active)
+                        <a href="{{route('admin.user.in_active',$college->id)}}" class="btn btn-warning btn-sm">In Active</a>
+                    @else 
+                        <a href="{{route('admin.user.active',$college->id)}}" class="btn btn-success btn-sm">Active</a>
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection
+@section('scripts')
+@endsection
