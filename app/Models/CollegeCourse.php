@@ -13,6 +13,7 @@ class CollegeCourse extends Model
         'user_id',
         'college_profile_id',
         'seats',
+        'course_name'
     ];
 
     public function user(){

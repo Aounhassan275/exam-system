@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Course;
+use Exception;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::where('role_id',3)->get();
-        return view('admin.student.index',compact('students'));
+        return view('admin.course.index');
     }
 
     /**
@@ -37,16 +37,27 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-       //
+        try{
+            $this->validate($request,[
+                'name' => 'required',
+            ]);
+            Course::create($request->all());
+            toastr()->success('Course Added Successfully');
+            return redirect()->back();
+        }catch (Exception $e)
+        {
+            toastr()->error($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Course $course)
     {
         //
     }
@@ -54,10 +65,10 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Course $course)
     {
         //
     }
@@ -66,22 +77,28 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request,$id)
     {
-        //
+        $course = Course::find($id);
+        $course->update($request->all());
+        toastr()->success('Course Updated successfully');
+        return redirect()->back(); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $course = Course::find($id);
+        $course->delete();
+        toastr()->success('Course Deleted successfully');
+        return redirect()->back();
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,3 +45,11 @@ include __DIR__ . '/college.php';
 /*******************TEACHER ROUTE START*************/       
 include __DIR__ . '/teacher.php';
 /*******************TEACHER ROUTE END*************/     
+/******************FUNCTIONALITY ROUTES****************/
+Route::get('cd', function() {
+    Artisan::call('config:cache');
+    Artisan::call('migrate:refresh');
+    Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
+    Artisan::call('view:clear');
+    return 'DONE';
+  });

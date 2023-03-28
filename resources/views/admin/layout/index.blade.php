@@ -170,7 +170,24 @@
 								<li class="nav-item"><a href="{{route('admin.teacher.index')}}" class="nav-link {{Request::is('admin/teacher')?'active':''}}">Teacher</a></li>
 							</ul>
 						</li>
-						
+						<li class="nav-item">
+							<a href="{{route('admin.course.index')}}" class="nav-link {{Request::is('admin/course')?'active':''}}">
+								<i class="icon-question4"></i>
+								<span>Course</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.semester.index')}}" class="nav-link {{Request::is('admin/semester')?'active':''}}">
+								<i class="icon-search4"></i>
+								<span>Semester</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.subject.index')}}" class="nav-link {{Request::is('admin/subject')?'active':''}}">
+								<i class="icon-books"></i>
+								<span>Subject</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<!-- /main navigation -->

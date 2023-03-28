@@ -2,7 +2,10 @@
 /****************** ADMIN MIDDLEWARE PAGES ROUTES START****************/
 
 use App\Http\Controllers\Admin\CollegeController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -25,7 +28,16 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************STUDENT ROUTE END*************/       
     /*******************TEACHER ROUTE START*************/       
     Route::resource('teacher',TeacherController::class);
-    /*******************TEACHER ROUTE END*************/         
+    /*******************TEACHER ROUTE END*************/    
+    /*******************COURSE ROUTE START*************/       
+    Route::resource('course',CourseController::class);
+    /*******************COURSE ROUTE END*************/          
+    /*******************SEMESTER ROUTE START*************/       
+    Route::resource('semester',SemesterController::class);
+    /*******************SEMESTER ROUTE END*************/         
+    /*******************SUBJECT ROUTE START*************/       
+    Route::resource('subject',SubjectController::class);
+    /*******************SUBJECT ROUTE END*************/           
 });
 /****************** ADMIN MIDDLEWARE PAGES ROUTES END****************/
 ?>

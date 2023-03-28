@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\FileHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,11 +20,16 @@ class CollegeProfile extends Model
         'city',
         'year_of_establishment',
         'address',
-        'certificate'
+        'certificate',
+        'document'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
+    }
+    
+    public function setDocumentAttribute($value){
+        $this->attributes['document'] = FileHelper::saveFile($value,'/uploaded_files/');
     }
 }

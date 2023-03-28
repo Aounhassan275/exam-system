@@ -71,6 +71,69 @@
             </div>
         </a>
     </div>
+    <div class="col-sm-4 col-xl-4">
+        <a href="{{route('admin.course.index')}}">
+            <div class="card card-body bg-danger-400 has-bg-image">
+                <div class="media">
+                    <div class="mr-3 align-self-center">
+                        <i class="icon-stack-picture icon-3x opacity-75"></i>
+                    </div>
+                    <div class="media-body text-right">
+                    <h3 class="mb-0">{{App\Models\Course::count()}}</h3>
+                        <span class="text-uppercase font-size-xs">Total Course</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-sm-4 col-xl-4">
+        <a href="{{route('admin.semester.index')}}">
+            <div class="card card-body bg-success-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body align-self-center ">
+                    <h3 class="mb-0">{{App\Models\Semester::count()}}</h3>
+                        <span class="text-uppercase font-size-xs">Total Semester </span>
+                    </div>
+                    <div class="ml-3 text-right">
+                        <i class="icon-bubbles4 icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-4 col-xl-4">
+        <a href="{{route('admin.subject.index')}}">
+            <div class="card card-body bg-teal-400 has-bg-image">
+                <div class="media">
+                    <div class="mr-3 align-self-center">
+                        <i class="icon-question4 icon-3x opacity-75"></i>
+                    </div>
+                    <div class="media-body text-right"> 
+                    <h3 class="mb-0">{{App\Models\Subject::count()}}</h3>
+                        <span class="text-uppercase font-size-xs">Total Subject</span>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-4 col-xl-4">
+        {{-- <a href="{{route('admin.resource.index')}}"> --}}
+            <div class="card card-body bg-purple-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0"></h3>
+                        <span class="text-uppercase font-size-xs"></span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-search4 icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        {{-- </a> --}}
+    </div>
 </div>
 @endsection
 @section('scripts')

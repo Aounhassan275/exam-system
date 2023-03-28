@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('year_of_establishment')->nullable();
             $table->string('address')->nullable();
             $table->string('certificate')->nullable();
+            $table->string('document')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
