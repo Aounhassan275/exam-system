@@ -2,6 +2,8 @@
 /****************** ADMIN MIDDLEWARE PAGES ROUTES START****************/
 
 use App\Http\Controllers\Admin\CollegeController;
+use App\Http\Controllers\Admin\CollegeCourseController;
+use App\Http\Controllers\Admin\CollegeProfileController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StudentController;
@@ -21,8 +23,15 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     Route::resource('user',UserController::class);
     /*******************USER ROUTE END*************/             
     /*******************COLLEGE ROUTE START*************/       
-    Route::resource('college',CollegeController::class);
-    /*******************COLLEGE ROUTE END*************/         
+    Route::resource('college',CollegeController::class);  
+    /*******************COLLEGE PROFILE ROUTE START*************/       
+    Route::get('college_profile/download/{id}',[CollegeProfileController::class,'downloadFile'])->name('college_profile.download');
+    Route::resource('college_profile',CollegeProfileController::class);
+    /*******************COLLEGE PROFILE ROUTE END*************/    
+    /*******************COLLEGE COURSE ROUTE START*************/       
+    Route::resource('college_course',CollegeCourseController::class);
+    /*******************COLLEGE PROFILE ROUTE END*************/    
+    /*******************COLLEGE ROUTE END*************/             
     /*******************STUDENT ROUTE START*************/       
     Route::resource('student',StudentController::class);
     /*******************STUDENT ROUTE END*************/       

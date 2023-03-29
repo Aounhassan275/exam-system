@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\CollegeCourse;
 use Illuminate\Http\Request;
 
-class CollegeController extends Controller
+class CollegeCourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class CollegeController extends Controller
      */
     public function index()
     {
-        $colleges = User::where('role_id',2)->get();
-        return view('admin.college.index',compact('colleges'));
+        //
     }
 
     /**
@@ -43,22 +42,21 @@ class CollegeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeCourse  $collegeCourse
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(CollegeCourse $collegeCourse)
     {
-        $college = User::find($id);
-        return view('admin.college.show',compact('college'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeCourse  $collegeCourse
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(CollegeCourse $collegeCourse)
     {
         //
     }
@@ -67,27 +65,24 @@ class CollegeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeCourse  $collegeCourse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        if($request->password)
-            $user->update($request->all());
-        else
-            $user->update($request->except('password'));
-        toastr()->success('College Profile Updated successfully');
+        $collegeCourse = CollegeCourse::find($id);
+        $collegeCourse->update($request->all());
+        toastr()->success('College Course Updated successfully');
         return redirect()->back(); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeCourse  $collegeCourse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(CollegeCourse $collegeCourse)
     {
         //
     }

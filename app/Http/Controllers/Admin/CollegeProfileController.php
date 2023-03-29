@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\CollegeProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
-class CollegeController extends Controller
+class CollegeProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,7 @@ class CollegeController extends Controller
      */
     public function index()
     {
-        $colleges = User::where('role_id',2)->get();
-        return view('admin.college.index',compact('colleges'));
+        //
     }
 
     /**
@@ -43,22 +43,21 @@ class CollegeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeProfile  $collegeProfile
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(CollegeProfile $collegeProfile)
     {
-        $college = User::find($id);
-        return view('admin.college.show',compact('college'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeProfile  $collegeProfile
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(CollegeProfile $collegeProfile)
     {
         //
     }
@@ -67,16 +66,13 @@ class CollegeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeProfile  $collegeProfile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        if($request->password)
-            $user->update($request->all());
-        else
-            $user->update($request->except('password'));
+        $collegeProfile = CollegeProfile::find($id);
+        $collegeProfile->update($request->all());
         toastr()->success('College Profile Updated successfully');
         return redirect()->back(); 
     }
@@ -84,11 +80,18 @@ class CollegeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CollegeProfile  $collegeProfile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(CollegeProfile $collegeProfile)
     {
         //
+    }
+    
+    public function downloadFile($id)
+    {
+        $profile = CollegeProfile::find($id);
+        $files = public_path(). "$profile->document";
+        return Response::download($files);
     }
 }
