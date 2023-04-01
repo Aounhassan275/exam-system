@@ -53,3 +53,9 @@ Route::get('cd', function() {
     Artisan::call('view:clear');
     return 'DONE';
   });
+  Route::get('migrate', function() {
+    Artisan::call('config:cache');
+    Artisan::call('migrate');
+    Artisan::call('view:clear');
+    return 'DONE';
+  });
