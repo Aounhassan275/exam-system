@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Subject;
 use Exception;
 use Illuminate\Http\Request;
@@ -72,9 +73,10 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit($id)
     {
-        //
+        $subject = Subject::find($id);
+        return view('admin.subject.edit',compact('subject'));
     }
 
     /**
@@ -104,5 +106,10 @@ class SubjectController extends Controller
         $subject->delete();
         toastr()->success('Subject Deleted successfully');
         return redirect()->back();
+    }
+    public function getCourseSemsters(Request $request)
+    {
+        $semesters = Course::find($request->id)->semesters;        
+        return response()->json($semesters);
     }
 }

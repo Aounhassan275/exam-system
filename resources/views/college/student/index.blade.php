@@ -1,4 +1,4 @@
-@extends('admin.layout.index')
+@extends('college.layout.index')
 
 @section('title')
     Students
@@ -29,12 +29,12 @@
                 @foreach ($students  as $key => $student)
                 <tr>
                     <td>{{$key+1}}</td>
-                    <td>{{$student->name}}</td>
-                    <td>{{$student->email}}</td>
-                    <td>{{@$student->studentProfile->college->name}}</td>
-                    <td>{{@$student->studentProfile->fathers_name}}</td>
-                    <td>{{@$student->studentProfile->mother_name}}</td>
-                    <td>{{@$student->studentProfile->gender}}</td>
+                    <td>{{$student->student->name}}</td>
+                    <td>{{$student->student->email}}</td>
+                    <td>{{@$student->college->name}}</td>
+                    <td>{{@$student->fathers_name}}</td>
+                    <td>{{@$student->mother_name}}</td>
+                    <td>{{@$student->gender}}</td>
                     <td>
                         @if($student->is_verified)
                             <span class="badge badge-success">Verified</span>
@@ -51,13 +51,13 @@
                     </td>
                     <td>
                         @if($student->is_active)
-                            <a href="{{route('admin.user.in_active',$student->id)}}" class="btn btn-warning btn-sm">In Active</a>
+                            <a href="{{route('college.student_profile.in_active',$student->id)}}" class="btn btn-warning btn-sm">In Active</a>
                         @else 
-                            <a href="{{route('admin.user.active',$student->id)}}" class="btn btn-success btn-sm">Active</a>
+                            <a href="{{route('college.student_profile.active',$student->id)}}" class="btn btn-success btn-sm">Active</a>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('admin.student.show',$student->id)}}" class="btn btn-primary btn-sm">Show</a>
+                        <a href="{{route('college.student_profile.show',$student->id)}}" class="btn btn-primary btn-sm">Show</a>
                     </td>
                 </tr>
                 @endforeach

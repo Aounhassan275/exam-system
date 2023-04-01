@@ -27,12 +27,15 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************COLLEGE PROFILE ROUTE START*************/       
     Route::get('college_profile/download/{id}',[CollegeProfileController::class,'downloadFile'])->name('college_profile.download');
     Route::resource('college_profile',CollegeProfileController::class);
-    /*******************COLLEGE PROFILE ROUTE END*************/    
+    /*******************COLLEGE PROFILE ROUTE END*************/   
     /*******************COLLEGE COURSE ROUTE START*************/       
     Route::resource('college_course',CollegeCourseController::class);
     /*******************COLLEGE PROFILE ROUTE END*************/    
     /*******************COLLEGE ROUTE END*************/             
-    /*******************STUDENT ROUTE START*************/       
+    /*******************STUDENT ROUTE START*************/  
+    /*******************COLLEGE PROFILE ROUTE START*************/       
+    Route::resource('student_profile',StudentProfileController::class);
+    /*******************COLLEGE PROFILE ROUTE END*************/         
     Route::resource('student',StudentController::class);
     /*******************STUDENT ROUTE END*************/       
     /*******************TEACHER ROUTE START*************/       
@@ -45,6 +48,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     Route::resource('semester',SemesterController::class);
     /*******************SEMESTER ROUTE END*************/         
     /*******************SUBJECT ROUTE START*************/       
+    Route::post('subject/get_course_semsters',[SubjectController::class,'getCourseSemsters'])->name('subject.get_course_semsters');
     Route::resource('subject',SubjectController::class);
     /*******************SUBJECT ROUTE END*************/           
 });

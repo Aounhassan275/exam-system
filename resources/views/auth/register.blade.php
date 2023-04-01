@@ -258,6 +258,9 @@
 											</div>
 										</div>
 									</div>
+									<div class="row student_profile_fields" {{old('role_id')?old('role_id') == 3:'hidden'}}>
+										@include('auth.partials.student_profile_fields')
+									</div>
 									<div class="form-group">
 										<input class="" type="checkbox" name="terms_condiition" required> I accept <a href="{{url('terms_&_condition')}}"> terms and condition policy </a>of Exam System.
 									</div>
@@ -358,8 +361,13 @@
 			if(role_id == 2)
 			{
 				$('.all_college_fields').attr("hidden",false);
+				$('.student_profile_fields').attr("hidden",true);
+			}else if(role_id == 3) {
+				$('.all_college_fields').attr("hidden",true);
+				$('.student_profile_fields').attr("hidden",false);
 			}else{
 				$('.all_college_fields').attr("hidden",true);
+				$('.student_profile_fields').attr("hidden",true);
 			}
         });
         $(document).on('change', '#new_code', function (event) {

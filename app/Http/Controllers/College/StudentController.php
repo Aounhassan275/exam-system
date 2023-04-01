@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\College;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -15,8 +17,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::where('role_id',3)->get();
-        return view('admin.student.index',compact('students'));
+        return view('student.student.index',compact('students'));
     }
 
     /**

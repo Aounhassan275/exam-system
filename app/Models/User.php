@@ -61,6 +61,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(CollegeCourse::class);
     }
+    public function studentProfile()
+    {
+        return $this->hasOne(StudentProfile::class);
+    }
+    public function studentProfileAddresses()
+    {
+        return $this->hasMany(StudentProfileAddress::class);
+    }
     public function getRole()
     {
         return $this->role->name;

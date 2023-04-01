@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CollegeCourse;
 use App\Models\CollegeProfile;
+use App\Models\StudentProfile;
+use App\Models\StudentProfileAddress;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -37,11 +39,24 @@ class AuthController extends Controller
             {
                 toastr()->success('You Login Successfully');
                 if($user->role->name == 'Student')
-                    return redirect()->intended(route('student.dashboard.index'));
+                {
+                    if($user->studentProfile->is_verified && $user->studentProfile->is_active)
+                    {
+                        return redirect()->intended(route('student.dashboard.index'));
+                    }else{
+                        Auth::logout();
+                        toastr()->error('User is In Active or Not Verified Yet By College.');
+                        return redirect()->back();
+                    }
+                }
                 else if($user->role->name == 'College')
+                {
                     return redirect()->intended(route('college.dashboard.index'));
+                }
                 else
+                {
                     return redirect()->intended(route('teacher.dashboard.index'));
+                }
             }
             else{
                 Auth::logout();
@@ -84,6 +99,19 @@ class AuthController extends Controller
                     'year_of_establishment' => 'required',
                     'address' => 'required',
                 ]);
+            }else if($request->role_id == 3)
+            {
+                $this->validate($request,[
+                    'college_id' => 'required',
+                    'phone' => 'required',
+                    'fathers_name' => 'required',
+                    'mother_name' => 'required',
+                    'blood_group' => 'required',
+                    'date_of_birth' => 'required',
+                    'gender' => 'required',
+                    'nationality' => 'required',
+                ]);
+
             }
             if($request->password != $request->confirm_password)
             {
@@ -113,6 +141,27 @@ class AuthController extends Controller
                         ]);
                     }
                 }
+            }else if($request->role_id == 3)
+            {
+
+                $profile = StudentProfile::create(['user_id' => $user->id]+ $request->all());
+                foreach($request->type as $key => $type)
+                {
+                    StudentProfileAddress::create([
+                        'user_id' => $user->id,
+                        'student_profile_id' => $profile->id,
+                        'type' => $type,
+                        'state' => $request->state[$key],
+                        'landmark' => $request->landmark[$key],
+                        'city' => $request->city[$key],
+                        'lane' => $request->lane[$key],
+                        'country' => $request->country[$key],
+                        'address' => $request->address[$key],
+                        'town' => $request->town[$key],
+                        'pin' => $request->pin[$key],
+                    ]);
+                }
+
             }
             toastr()->success('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
             return redirect(url('/'));
