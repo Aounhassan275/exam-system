@@ -260,8 +260,8 @@
 											<th>Type</th>
 											<th>Address</th>
 											<th>Country</th>
-											<th>City</th>
 											<th>State</th>
+											<th>City</th>
 											<th>Landmark</th>
 											<th>Lane</th>
 											<th>Town</th>
@@ -274,9 +274,9 @@
 											<td>{{$key+1}}</td>
 											<td>{{$address->type}}</td>
 											<td>{{$address->address}}</td>
-											<td>{{$address->country}}</td>
-											<td>{{$address->city}}</td>
-											<td>{{$address->state}}</td>
+											<td>{{@$address->country->name}}</td>
+											<td>{{@$address->state->name}}</td>
+											<td>{{@$address->city->name}}</td>
 											<td>{{$address->landmark}}</td>
 											<td>{{$address->lane}}</td>
 											<td>{{$address->town}}</td>
