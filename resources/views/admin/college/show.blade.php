@@ -204,15 +204,25 @@
 											<div class="row">
 												<div class="col-md-4">
 													<label>State</label>
-													<input type="text" name="state" value="{{@$college->collegeProfile->state}}" class="form-control">
+													<select  name="state_id" id="college_state_id"  class="form-control select-search" data-fouc>
+														<option selected disabled>Select State</option>
+														@foreach(App\Models\State::all() as $state)
+														<option @if($college->collegeProfile->state_id == $state->id) selected @endif value="{{$state->id}}">{{$state->name}}</option>
+														@endforeach
+													</select>
+												</div>
+												<div class="col-md-4">
+													<label>City</label>
+													<select  name="city_id" id="college_city_id"  class="form-control select-search" data-fouc>
+														<option selected disabled>Select City</option>
+														@foreach($college->collegeProfile->state->cities as $city)
+														<option @if($college->collegeProfile->city_id == $city->id) selected @endif value="{{$city->id}}">{{$city->name}}</option>
+														@endforeach
+													</select>
 												</div>
 												<div class="col-md-4">
 													<label>District</label>
 													<input type="text" name="district" value="{{@$college->collegeProfile->district}}" class="form-control">
-												</div>
-												<div class="col-md-4">
-													<label>City</label>
-													<input type="text" name="city" value="{{@$college->collegeProfile->city}}" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -282,4 +292,26 @@
 				<!-- /inner container -->
 @endsection
 @section('scripts')
+<script>
+	
+    $(document).on('change', '#college_state_id', function (event) {
+        state_id = $(this).val();
+        $.ajax({
+            url: '{{url("get_city_against_states")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            data: {
+                'state_id': state_id,
+            },
+        })
+        .done(function (data) {
+            $('#college_city_id').empty();
+            $('#college_city_id').append('<option disabled>Select City</option>');
+            for (i=0;i<data.length;i++){
+                $('#college_city_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+            }
+        });
+    });
+</script>
 @endsection

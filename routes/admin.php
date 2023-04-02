@@ -1,11 +1,14 @@
 <?php 
 /****************** ADMIN MIDDLEWARE PAGES ROUTES START****************/
 
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CollegeController;
 use App\Http\Controllers\Admin\CollegeCourseController;
 use App\Http\Controllers\Admin\CollegeProfileController;
+use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
@@ -50,7 +53,16 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************SUBJECT ROUTE START*************/       
     Route::post('subject/get_course_semsters',[SubjectController::class,'getCourseSemsters'])->name('subject.get_course_semsters');
     Route::resource('subject',SubjectController::class);
-    /*******************SUBJECT ROUTE END*************/           
+    /*******************SUBJECT ROUTE END*************/            
+    /*******************COUNTRY ROUTE START*************/       
+    Route::resource('country',CountryController::class);
+    /*******************COUNTRY ROUTE END*************/            
+    /*******************STATE ROUTE START*************/       
+    Route::resource('state',StateController::class);
+    /*******************STATE ROUTE END*************/               
+    /*******************CITY ROUTE START*************/       
+    Route::resource('city',CityController::class);
+    /*******************CITY ROUTE END*************/            
 });
 /****************** ADMIN MIDDLEWARE PAGES ROUTES END****************/
 ?>

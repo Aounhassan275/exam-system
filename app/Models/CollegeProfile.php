@@ -15,9 +15,9 @@ class CollegeProfile extends Model
         'phone',
         'college_name',
         'principal_name',
-        'state',
+        'state_id',
         'district',
-        'city',
+        'city_id',
         'year_of_establishment',
         'address',
         'certificate',
@@ -31,5 +31,15 @@ class CollegeProfile extends Model
     
     public function setDocumentAttribute($value){
         $this->attributes['document'] = FileHelper::saveFile($value,'/uploaded_files/');
+    }
+    
+    public function state()
+    {
+        return $this->belongsTo(State::class,'state_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class,'city_id');
     }
 }

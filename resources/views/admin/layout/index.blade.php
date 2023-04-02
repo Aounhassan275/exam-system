@@ -188,6 +188,15 @@
 								<span>Subject</span>
 							</a>
 						</li>
+						<li class="nav-item nav-item-submenu {{Request::is('admin/country*') || Request::is('admin/state*') || Request::is('admin/city*') ?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="icon-map"></i> <span>Locations</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/country*') || Request::is('admin/state*') || Request::is('admin/city*')?'display:block':''}}">
+								<li class="nav-item"><a href="{{route('admin.country.index')}}" class="nav-link {{Request::is('admin/country')?'active':''}}">Country</a></li>
+								<li class="nav-item"><a href="{{route('admin.state.index')}}" class="nav-link {{Request::is('admin/state')?'active':''}}">State</a></li>
+								<li class="nav-item"><a href="{{route('admin.city.index')}}" class="nav-link {{Request::is('admin/city')?'active':''}}">City</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 				<!-- /main navigation -->

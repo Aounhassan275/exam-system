@@ -26,9 +26,11 @@
 
 	<!-- Theme JS files -->
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 
 	<script src="{{asset('user_asset/assets/js/app.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/login.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_select2.js')}}"></script>
 	<!-- /theme JS files -->
 	<style>
 		.error_message{
@@ -131,132 +133,7 @@
 
 									</div>
 									<div class="row all_college_fields" {{old('role_id')?old('role_id') == 2:'hidden'}}>
-										<div class="col-md-3">
-											<label>College Name</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" id="college_name" class="form-control" value="{{old('college_name')}}" placeholder="College Name" name="college_name">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label>Principal Name</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="{{old('principal_name')}}" placeholder="Principal Name" name="principal_name">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label>Affillicate Document</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="file" class="form-control"  placeholder="Principal Name" name="document">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label>State</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="{{old('state')}}" placeholder="State" name="state">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label>District</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="{{old('district')}}" placeholder="District" name="district">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label>City</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="{{old('city')}}" placeholder="City" name="city">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label>Year of Establishment</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="{{old('year_of_establishment')}}" placeholder="Year of Establishment" name="year_of_establishment">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label>Address</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="{{old('address')}}" placeholder="Address" name="address">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<label>Course 1</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="" placeholder="Course Name 1" name="course_names[]">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<label>Course 1 Seats</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="number" class="form-control" value="" placeholder="Course Seats" name="course_seats[]">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<label>Course 2</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="" placeholder="Course Name 2" name="course_names[]">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<label>Course 2 Seats</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="number" class="form-control" value="" placeholder="Course Seats" name="course_seats[]">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<label>Course 3</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" class="form-control" value="" placeholder="Course Name 3" name="course_names[]">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<label>Course 3 Seats</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="number" class="form-control" value="" placeholder="Course Seats" name="course_seats[]">
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
-											</div>
-										</div>
+										@include('auth.partials.college_profile_fields')
 									</div>
 									<div class="row student_profile_fields" {{old('role_id')?old('role_id') == 3:'hidden'}}>
 										@include('auth.partials.student_profile_fields')
@@ -286,6 +163,7 @@
 	</div>
 	<!-- /page content -->
     <script src="{{asset('user_asset/assets/js/toastr.js')}}"></script>
+	@include('auth.partials.js')
 	@toastr_render
     <script>
         function validatePassword(password) {
@@ -370,33 +248,28 @@
 				$('.student_profile_fields').attr("hidden",true);
 			}
         });
-        $(document).on('change', '#new_code', function (event) {
-            $('.btn').attr("disabled",true);
-			new_code = $('#new_code').val();
-			$('#refferral_user').html("");	
-            event.preventDefault();
-            $.ajax({
-                url: '{{url("check_refferral_code")}}',
-                type: 'POST',
-				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
-				dataType: 'JSON',
-                data: {
-					'code': new_code,
-				},
-            })
-			.done(function (response) {
-				$('.btn').attr("disabled",false);
-				if(response.status == true)
-				{
-					$('#refferral_user').removeClass("error_message");
-					$('#refferral_user').addClass("success_message");
-					$('#refferral_user').html(response.message);
-				}else{
-					$('#refferral_user').addClass("error_message");
-					$('#refferral_user').removeClass("success_message");
-					$('#refferral_user').html(response.message);	
-				}
-			})
+        $(document).on('change', '#same_as_temparory', function (event) {
+            if(this.checked){
+				$('#permenant_address').val($('#temparory_address').val());
+				$('#permenant_country_id').val($('#temparory_country_id').val());
+				$('#permenant_state_id').val($('#temparory_state_id').val());
+				$('#permenant_landmark').val($('#temparory_landmark').val());
+				$('#permenant_city_id').val($('#temparory_city_id').val());
+				$('#permenant_town').val($('#temparory_town').val());
+				$('#permenant_pin').val($('#temparory_pin').val());
+				$('#permenant_lan').val($('#temparory_lan').val());
+				$('.permenant_fields').hide();
+			}else{
+				$('#permenant_address').val('');
+				$('#permenant_country_id').val('');
+				$('#permenant_state_id').val('');
+				$('#permenant_landmark').val('');
+				$('#permenant_city_id').val('');
+				$('#permenant_town').val('');
+				$('#permenant_pin').val('');
+				$('#permenant_lan').val('');
+				$('.permenant_fields').show();
+			}
         });
     </script>
 </body>

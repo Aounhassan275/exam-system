@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\CollegeCourse;
 use App\Models\CollegeProfile;
+use App\Models\State;
 use App\Models\StudentProfile;
 use App\Models\StudentProfileAddress;
 use App\Models\User;
@@ -93,9 +95,9 @@ class AuthController extends Controller
                     'college_name' => 'required',
                     'principal_name' => 'required',
                     'document' => 'required|mimes:pdf|max:30000',
-                    'state' => 'required',
+                    'state_id' => 'required',
                     'district' => 'required',
-                    'city' => 'required',
+                    'city_id' => 'required',
                     'year_of_establishment' => 'required',
                     'address' => 'required',
                 ]);
@@ -147,16 +149,26 @@ class AuthController extends Controller
                 $profile = StudentProfile::create(['user_id' => $user->id]+ $request->all());
                 foreach($request->type as $key => $type)
                 {
+                    if($request->same_as_temparory && $key == 1)
+                    {
+                        $country_id = $request->country[0];
+                        $state_id = $request->state[0];
+                        $city_id = $request->city[0];
+                    }else{
+                        $country_id = $request->country[$key];
+                        $state_id = $request->state[$key];
+                        $city_id = $request->city[$key];
+                    }
                     StudentProfileAddress::create([
                         'user_id' => $user->id,
                         'student_profile_id' => $profile->id,
                         'type' => $type,
-                        'state' => $request->state[$key],
+                        'state_id' => $state_id,
                         'landmark' => $request->landmark[$key],
-                        'city' => $request->city[$key],
+                        'city_id' => $city_id,
                         'lane' => $request->lane[$key],
-                        'country' => $request->country[$key],
-                        'address' => $request->address[$key],
+                        'country_id' => $country_id,
+                        'address' => $request->addresses[$key],
                         'town' => $request->town[$key],
                         'pin' => $request->pin[$key],
                     ]);
@@ -172,5 +184,16 @@ class AuthController extends Controller
         }
     
     }
-    
+    public function getCityAgainstStates(Request $request)
+    {
+        $cities = City::where('state_id',$request->state_id)->get();        
+        return response()->json($cities);
+
+    }
+    public function getStateAgainstCountries(Request $request)
+    {
+        $states = State::where('country_id',$request->country_id)->get();        
+        return response()->json($states);
+
+    }
 }

@@ -12,15 +12,29 @@ class StudentProfileAddress extends Model
     protected $fillable = [
         'user_id',
         'student_profile_id',
-        'state',
+        'state_id',
         'landmark',
-        'city',
+        'city_id',
         'lane',
-        'country',
+        'country_id',
         'address',
         'town',
         'pin',
         'type',
     ];
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class,'country_id');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class,'state_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class,'city_id');
+    }
 }

@@ -28,6 +28,8 @@ Route::post('register',[AuthController::class,'register'])->name('register');
 /*******************LOGOUT ROUTE START*************/       
 Route::get('logout',[AuthController::class,'logout'])->name('logout');
 /*******************LOGOUT ROUTE END*************/     
+Route::post('get_city_against_states',[AuthController::class,'getCityAgainstStates'])->name('get_city_against_states');
+Route::post('get_state_against_countries',[AuthController::class,'getStateAgainstCountries'])->name('get_state_against_countries');
 
 
 /*******************ADMIN ROUTE START*************/       

@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('college_name')->nullable();
             $table->string('principal_name')->nullable();
-            $table->string('state')->nullable();
+            $table->foreignId('state_id')->nullable();
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreignId('city_id')->nullable();
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->string('district')->nullable();
-            $table->string('city')->nullable();
             $table->string('year_of_establishment')->nullable();
             $table->string('address')->nullable();
             $table->string('certificate')->nullable();
