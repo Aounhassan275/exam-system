@@ -189,9 +189,34 @@
 														<option @if($student->studentProfile->college_id == $college->id) selected @endif value="{{$college->id}}">{{$college->name}}</option>
 														@endforeach
 													</select>
-													</select>
 												</div>
 												<div class="col-md-6">
+													<label>Course</label>
+													<select name="course_id" class="form-control">
+														<option selected disabled >Select Course</option>
+														@foreach(App\Models\CollegeCourse::where('user_id',$student->studentProfile->college_id)->get() as $course)
+														<option @if($student->studentProfile->course_id == $course->id) selected @endif value="{{$course->id}}">{{$course->course->name}}</option>
+														@endforeach
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-4">
+													<label>Enrollment Year</label>
+													<select  name="enrollment_year"  class="form-control select-search" data-fouc>
+														<option selected disabled>Select Enrollment Year</option>
+														@for($i = 2015;$i < 2031;$i++)
+														<option @if($student->studentProfile->enrollment_year == $i) selected @endif  value="{{$i}}">{{$i}}</option>
+														@endfor
+													</select>
+												</div>
+												<div class="col-md-4">
+													<label>Roll Number</label>
+													<input type="text" class="form-control" value="{{@$student->studentProfile->roll_number}}"  placeholder="Student Roll Number" name="roll_number">
+												</div>
+												<div class="col-md-4">
 													<label>Phone</label>
 													<input type="text" class="form-control" value="{{@$student->studentProfile->phone}}" placeholder="Student Phone" name="phone">
 												</div>
@@ -263,7 +288,6 @@
 											<th>State</th>
 											<th>City</th>
 											<th>Landmark</th>
-											<th>Lane</th>
 											<th>Town</th>
 											<th>Pin</th>
 										</tr>
@@ -278,7 +302,6 @@
 											<td>{{@$address->state->name}}</td>
 											<td>{{@$address->city->name}}</td>
 											<td>{{$address->landmark}}</td>
-											<td>{{$address->lane}}</td>
 											<td>{{$address->town}}</td>
 											<td>{{$address->pin}}</td>
 										</tr>

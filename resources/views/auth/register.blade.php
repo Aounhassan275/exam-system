@@ -138,6 +138,9 @@
 									<div class="row student_profile_fields" {{old('role_id')?old('role_id') == 3:'hidden'}}>
 										@include('auth.partials.student_profile_fields')
 									</div>
+									<div class="row all_teacher_fields" {{old('role_id')?old('role_id') == 4:'hidden'}}>
+										@include('auth.partials.teacher_profile_fields')
+									</div>
 									<div class="form-group">
 										<input class="" type="checkbox" name="terms_condiition" required> I accept <a href="{{url('terms_&_condition')}}"> terms and condition policy </a>of Exam System.
 									</div>
@@ -240,12 +243,20 @@
 			{
 				$('.all_college_fields').attr("hidden",false);
 				$('.student_profile_fields').attr("hidden",true);
+				$('.all_teacher_fields').attr("hidden",true);
 			}else if(role_id == 3) {
 				$('.all_college_fields').attr("hidden",true);
+				$('.all_teacher_fields').attr("hidden",true);
 				$('.student_profile_fields').attr("hidden",false);
-			}else{
+			}else if(role_id == 4){
+				$('.all_teacher_fields').attr("hidden",false);
 				$('.all_college_fields').attr("hidden",true);
 				$('.student_profile_fields').attr("hidden",true);
+			}else{
+				$('.all_teacher_fields').attr("hidden",true);
+				$('.all_college_fields').attr("hidden",true);
+				$('.student_profile_fields').attr("hidden",true);
+
 			}
         });
         $(document).on('change', '#same_as_temparory', function (event) {

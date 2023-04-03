@@ -13,21 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student_profiles', function (Blueprint $table) {
+        Schema::create('teacher_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('phone')->nullable();
-            $table->string('fathers_name')->nullable();
-            $table->string('mother_name')->nullable();
-            $table->string('blood_group')->nullable();
-            $table->string('date_of_birth')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('nationality')->nullable();
-            $table->string('enrollment_year')->nullable();
-            $table->string('roll_number')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
-            $table->foreignId('course_id')->nullable();
-            $table->foreign('course_id')->references('id')->on('college_courses')->onDelete('cascade');
             $table->foreignId('college_id')->nullable();
             $table->foreign('college_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
@@ -41,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_profiles');
+        Schema::dropIfExists('teacher_profiles');
     }
 };

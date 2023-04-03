@@ -13,11 +13,14 @@ class CollegeCourse extends Model
         'user_id',
         'college_profile_id',
         'seats',
-        'course_name'
+        'course_id'
     ];
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');
+    }
+    public function course(){
+        return $this->belongsTo(Course::class,'course_id');
     }
 
     public function collegeProfile(){

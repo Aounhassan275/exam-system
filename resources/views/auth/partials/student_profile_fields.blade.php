@@ -2,12 +2,40 @@
     <div class="col-md-3">
         <label>College</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
-            <select  name="college_id"  class="form-control select-search" data-fouc>
+            <select  name="college_id" id="college_id"  class="form-control select-search" data-fouc>
                 <option selected disabled>Select College</option>
                 @foreach(App\Models\User::where('role_id',2)->where('is_verified',1)->where('is_active',1)->get() as $college)
                 <option value="{{$college->id}}">{{$college->name}}</option>
                 @endforeach
             </select>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>Course</label>
+        <div class="form-group form-group-feedback form-group-feedback-left">
+            <select  name="course_id" id="student_course_id"  class="form-control select-search" data-fouc>
+                <option selected disabled>Select Course</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>Enrollment Year</label>
+        <div class="form-group form-group-feedback form-group-feedback-left">
+            <select  name="enrollment_year"  class="form-control select-search" data-fouc>
+                <option selected disabled>Select Enrollment Year</option>
+                @for($i = 2015;$i < 2031;$i++)
+                <option value="{{$i}}">{{$i}}</option>
+                @endfor
+            </select>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>Student Roll Number</label>
+        <div class="form-group form-group-feedback form-group-feedback-left">
+            <input type="text" class="form-control" value="{{old('roll_number')}}" placeholder="Student Roll Number" name="roll_number">
+            <div class="form-control-feedback">
+                <i class="icon-user text-muted"></i>
+            </div>
         </div>
     </div>
     <div class="col-md-3">
@@ -95,6 +123,15 @@
         </div>
     </div>  
     <div class="col-md-3">
+        <label>Landmark</label>
+        <div class="form-group form-group-feedback form-group-feedback-left">
+            <input type="text" class="form-control" id="temparory_landmark" value="{{old('landmark')}}" placeholder="Landmark" name="landmark[]">
+            <div class="form-control-feedback">
+                <i class="icon-user text-muted"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
         <label>Country</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <select  name="country[]" id="temparory_country_id"  class="form-control select-search" data-fouc>
@@ -122,15 +159,6 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Landmark</label>
-        <div class="form-group form-group-feedback form-group-feedback-left">
-            <input type="text" class="form-control" id="temparory_landmark" value="{{old('landmark')}}" placeholder="Landmark" name="landmark[]">
-            <div class="form-control-feedback">
-                <i class="icon-user text-muted"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
         <label>Town</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="text" class="form-control" id="temparory_town" value="{{old('town')}}" placeholder="Town" name="town[]">
@@ -143,15 +171,6 @@
         <label>Pin</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="text" class="form-control" id="temparory_pin" value="{{old('pin')}}" placeholder="Pin" name="pin[]">
-            <div class="form-control-feedback">
-                <i class="icon-user text-muted"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <label>Lane</label>
-        <div class="form-group form-group-feedback form-group-feedback-left">
-            <input type="text" class="form-control" id="temparory_lan" value="{{old('lane')}}" placeholder="Lan" name="lane[]">
             <div class="form-control-feedback">
                 <i class="icon-user text-muted"></i>
             </div>
@@ -173,6 +192,15 @@
                 </div>
             </div>
         </div>  
+        <div class="col-md-3">
+            <label>Landmark</label>
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input type="text" class="form-control" id="permenant_landmark" value="{{old('landmark')}}" placeholder="Landmark" name="landmark[]">
+                <div class="form-control-feedback">
+                    <i class="icon-user text-muted"></i>
+                </div>
+            </div>
+        </div>
         <div class="col-md-3">
             <label>Country</label>
             <div class="form-group form-group-feedback form-group-feedback-left">
@@ -201,15 +229,6 @@
             </div>
         </div>
         <div class="col-md-3">
-            <label>Landmark</label>
-            <div class="form-group form-group-feedback form-group-feedback-left">
-                <input type="text" class="form-control" id="permenant_landmark" value="{{old('landmark')}}" placeholder="Landmark" name="landmark[]">
-                <div class="form-control-feedback">
-                    <i class="icon-user text-muted"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
             <label>Town</label>
             <div class="form-group form-group-feedback form-group-feedback-left">
                 <input type="text" class="form-control" id="permenant_town" value="{{old('town')}}" placeholder="Town" name="town[]">
@@ -222,15 +241,6 @@
             <label>Pin</label>
             <div class="form-group form-group-feedback form-group-feedback-left">
                 <input type="text" class="form-control" id="permenant_pin" value="{{old('pin')}}" placeholder="Pin" name="pin[]">
-                <div class="form-control-feedback">
-                    <i class="icon-user text-muted"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <label>Lane</label>
-            <div class="form-group form-group-feedback form-group-feedback-left">
-                <input type="text" class="form-control" id="permenant_lan" value="{{old('lane')}}" placeholder="Lan" name="lane[]">
                 <div class="form-control-feedback">
                     <i class="icon-user text-muted"></i>
                 </div>

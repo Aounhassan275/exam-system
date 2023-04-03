@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('college_profile_id')->nullable();
             $table->foreign('college_profile_id')->references('id')->on('college_profiles')->onDelete('cascade');
-            $table->string('course_name')->nullable();
+            $table->foreignId('course_id')->nullable();
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->string('seats')->nullable();
             $table->timestamps();
         });

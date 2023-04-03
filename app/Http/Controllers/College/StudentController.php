@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\College;
 
 use App\Http\Controllers\Controller;
-use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,7 +74,7 @@ class StudentController extends Controller
     {
         $user = User::find($id);
         $user->update($request->all());
-        toastr()->success('Student Updated successfully');
+        toastr()->success('User Updated successfully');
         return redirect()->back(); 
     }
 
@@ -88,5 +87,42 @@ class StudentController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+    
+    public function verified($id)
+    {
+        $user = User::find($id);
+        $user->update([
+            'is_verified' => true
+        ]);
+        toastr()->success('User Verified Successfully');
+        return redirect()->back();
+    }
+    public function revert_verification($id)
+    {
+        $user = User::find($id);
+        $user->update([
+            'is_verified' => false
+        ]);
+        toastr()->success('User is Not Verified Now!');
+        return redirect()->back();
+    }
+    public function active($id)
+    {
+        $user = User::find($id);
+        $user->update([
+            'is_active' => true
+        ]);
+        toastr()->success('User Active Successfully');
+        return redirect()->back();
+    }
+    public function in_active($id)
+    {
+        $user = User::find($id);
+        $user->update([
+            'is_active' => false
+        ]);
+        toastr()->success('User is In Active Now!');
+        return redirect()->back();
     }
 }

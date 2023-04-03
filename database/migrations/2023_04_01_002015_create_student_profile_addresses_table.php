@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('student_profile_addresses', function (Blueprint $table) {
             $table->id();
             $table->string('landmark')->nullable();
-            $table->string('lane')->nullable();
             $table->string('address')->nullable();
             $table->string('town')->nullable();
             $table->string('pin')->nullable();

@@ -189,13 +189,17 @@
 										@csrf
 										<div class="form-group">
 											<div class="row">
-												<div class="col-md-6">
+												<div class="col-md-4">
 													<label>College Name</label>
 													<input type="text" name="college_name" value="{{@$college->collegeProfile->college_name}}" class="form-control">
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-4">
 													<label>Principal Name</label>
 													<input type="text" value="{{@$college->collegeProfile->principal_name}}" name="principal_name" class="form-control">
+												</div>
+												<div class="col-md-4">
+													<label>Phone</label>
+													<input type="text" value="{{@$college->collegeProfile->phone}}" name="phone" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -274,7 +278,7 @@
 										@foreach ($college->collegeCourses  as $key => $course)
 										<tr>
 											<td>{{$key+1}}</td>
-											<td>{{$course->course_name}}</td>
+											<td>{{@$course->course->name}}</td>
 											<td>{{$course->seats}}</td>
 										</tr>
 										@endforeach

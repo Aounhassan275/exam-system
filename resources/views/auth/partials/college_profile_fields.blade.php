@@ -17,6 +17,15 @@
     </div>
 </div>
 <div class="col-md-3">
+    <label>Phone</label>
+    <div class="form-group form-group-feedback form-group-feedback-left">
+        <input type="text" minlength="10" maxlength="10" class="form-control" value="{{old('mobile')}}" placeholder="Phone" name="mobile">
+        <div class="form-control-feedback">
+            <i class="icon-user text-muted"></i>
+        </div>
+    </div>
+</div>
+<div class="col-md-3">
     <label>Affillicate Document</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
         <input type="file" class="form-control"  placeholder="Principal Name" name="document">
@@ -74,10 +83,12 @@
 <div class="col-md-4">
     <label>Course 1</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
-        <input type="text" class="form-control" value="" placeholder="Course Name 1" name="course_names[]">
-        <div class="form-control-feedback">
-            <i class="icon-user text-muted"></i>
-        </div>
+        <select  name="course_ids[]"  class="form-control select-search" data-fouc>
+            <option selected disabled>Select Course</option>
+            @foreach(App\Models\Course::all() as $course)
+            <option value="{{$course->id}}">{{$course->name}}</option>
+            @endforeach
+        </select>
     </div>
 </div>
 <div class="col-md-4">
@@ -92,10 +103,12 @@
 <div class="col-md-4">
     <label>Course 2</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
-        <input type="text" class="form-control" value="" placeholder="Course Name 2" name="course_names[]">
-        <div class="form-control-feedback">
-            <i class="icon-user text-muted"></i>
-        </div>
+        <select  name="course_ids[]"  class="form-control select-search" data-fouc>
+            <option selected disabled>Select Course</option>
+            @foreach(App\Models\Course::all() as $course)
+            <option value="{{$course->id}}">{{$course->name}}</option>
+            @endforeach
+        </select>
     </div>
 </div>
 <div class="col-md-4">
@@ -110,10 +123,12 @@
 <div class="col-md-4">
     <label>Course 3</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
-        <input type="text" class="form-control" value="" placeholder="Course Name 3" name="course_names[]">
-        <div class="form-control-feedback">
-            <i class="icon-user text-muted"></i>
-        </div>
+        <select  name="course_ids[]"  class="form-control select-search" data-fouc>
+            <option selected disabled>Select Course</option>
+            @foreach(App\Models\Course::all() as $course)
+            <option value="{{$course->id}}">{{$course->name}}</option>
+            @endforeach
+        </select>
     </div>
 </div>
 <div class="col-md-4">

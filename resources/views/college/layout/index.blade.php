@@ -167,6 +167,12 @@
 								<span>Student Profiles</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('college.teacher_profile.index')}}" class="nav-link {{Request::is('college/teacher_profile')?'active':''}}">
+								<i class="icon-home4"></i>
+								<span>Teacher Profiles</span>
+							</a>
+						</li>
 						
 					</ul>
 				</div>

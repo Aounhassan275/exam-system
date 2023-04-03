@@ -15,7 +15,6 @@ class StudentProfileAddress extends Model
         'state_id',
         'landmark',
         'city_id',
-        'lane',
         'country_id',
         'address',
         'town',

@@ -30,6 +30,7 @@ Route::get('logout',[AuthController::class,'logout'])->name('logout');
 /*******************LOGOUT ROUTE END*************/     
 Route::post('get_city_against_states',[AuthController::class,'getCityAgainstStates'])->name('get_city_against_states');
 Route::post('get_state_against_countries',[AuthController::class,'getStateAgainstCountries'])->name('get_state_against_countries');
+Route::post('get_course_aganist_college',[AuthController::class,'getCourseAganistCollege'])->name('get_course_aganist_college');
 
 
 /*******************ADMIN ROUTE START*************/       

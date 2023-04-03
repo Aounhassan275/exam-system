@@ -8,6 +8,7 @@ use App\Models\CollegeProfile;
 use App\Models\State;
 use App\Models\StudentProfile;
 use App\Models\StudentProfileAddress;
+use App\Models\TeacherProfile;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -42,14 +43,7 @@ class AuthController extends Controller
                 toastr()->success('You Login Successfully');
                 if($user->role->name == 'Student')
                 {
-                    if($user->studentProfile->is_verified && $user->studentProfile->is_active)
-                    {
-                        return redirect()->intended(route('student.dashboard.index'));
-                    }else{
-                        Auth::logout();
-                        toastr()->error('User is In Active or Not Verified Yet By College.');
-                        return redirect()->back();
-                    }
+                    return redirect()->intended(route('student.dashboard.index')); 
                 }
                 else if($user->role->name == 'College')
                 {
@@ -100,11 +94,18 @@ class AuthController extends Controller
                     'city_id' => 'required',
                     'year_of_establishment' => 'required',
                     'address' => 'required',
+                    'mobile' => 'required',
+                ]);
+                $request->merge([
+                    'phone' => $request->mobile
                 ]);
             }else if($request->role_id == 3)
             {
                 $this->validate($request,[
                     'college_id' => 'required',
+                    'course_id' => 'required',
+                    'enrollment_year' => 'required',
+                    'roll_number' => 'required',
                     'phone' => 'required',
                     'fathers_name' => 'required',
                     'mother_name' => 'required',
@@ -112,6 +113,12 @@ class AuthController extends Controller
                     'date_of_birth' => 'required',
                     'gender' => 'required',
                     'nationality' => 'required',
+                ]);
+
+            }else if($request->role_id == 4)
+            {
+                $this->validate($request,[
+                    'teacher_college_id' => 'required'
                 ]);
 
             }
@@ -131,14 +138,14 @@ class AuthController extends Controller
             if($request->role_id == 2)
             {
                 $profile = CollegeProfile::create(['user_id' => $user->id]+ $request->all());
-                foreach($request->course_names as $key => $course_name)
+                foreach($request->course_ids as $key => $course_id)
                 {
-                    if($course_name)
+                    if($course_id)
                     {
                         CollegeCourse::create([
                             'user_id' => $user->id,
                             'college_profile_id' => $profile->id,
-                            'course_name' => $course_name,
+                            'course_id' => $course_id,
                             'seats' => $request->course_seats[$key],
                         ]);
                     }
@@ -166,7 +173,6 @@ class AuthController extends Controller
                         'state_id' => $state_id,
                         'landmark' => $request->landmark[$key],
                         'city_id' => $city_id,
-                        'lane' => $request->lane[$key],
                         'country_id' => $country_id,
                         'address' => $request->addresses[$key],
                         'town' => $request->town[$key],
@@ -174,6 +180,12 @@ class AuthController extends Controller
                     ]);
                 }
 
+            }else if($request->role_id == 4)
+            {
+                TeacherProfile::create([
+                    'college_id' => $request->teacher_college_id,
+                    'user_id' => $user->id,
+                ]);
             }
             toastr()->success('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
             return redirect(url('/'));
@@ -194,6 +206,17 @@ class AuthController extends Controller
     {
         $states = State::where('country_id',$request->country_id)->get();        
         return response()->json($states);
+
+    }
+    public function getCourseAganistCollege(Request $request)
+    {
+        $courses = CollegeCourse::where('user_id',$request->college_id)->get();  
+        $collegCourse = [];
+        foreach($courses as $course)
+        {
+            $collegCourse[] = ['id' => $course->id,'name' => $course->course->name];
+        }
+        return response()->json($collegCourse);
 
     }
 }

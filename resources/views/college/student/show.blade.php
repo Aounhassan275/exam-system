@@ -39,40 +39,28 @@
 						    		<span class="d-block opacity-75">{{$student->email}}</span>
 									
 									@if($student->is_verified)
-										<span class="badge badge-success">Verified By Admin</span>
+										<span class="badge badge-success">Verified</span>
 									@else
 										<span class="badge badge-danger">Not Verified</span>
 									@endif
 									
 									@if($student->is_active)
-										<span class="badge badge-success">Active By Admin</span>
+										<span class="badge badge-success">Active</span>
 									@else
 										<span class="badge badge-danger">Pending</span>
 									@endif
 									<br>
-									@if($student->studentProfile->is_verified)
-										<span class="badge badge-success">Verified By You</span>
-									@else
-										<span class="badge badge-danger">Not Verified By You</span>
-									@endif
-									
-									@if($student->studentProfile->is_active)
-										<span class="badge badge-success">Active By You</span>
-									@else
-										<span class="badge badge-danger">Pending From You</span>
-									@endif
-									<br>
 					    			<div class="list-icons list-icons-extended mt-3">
 										
-										@if($student->studentProfile->is_verified)
-											<a href="{{route('college.student_profile.revert_verification',$student->studentProfile->id)}}" class="btn btn-danger btn-sm">Revert Verification</a>
+										@if($student->is_verified)
+											<a href="{{route('college.student.revert_verification',$student->id)}}" class="btn btn-danger btn-sm">Revert Verification</a>
 										@else 
-											<a href="{{route('college.student_profile.verified',$student->studentProfile->id)}}" class="btn btn-info btn-sm">Verify</a>
+											<a href="{{route('college.student.verified',$student->id)}}" class="btn btn-info btn-sm">Verify</a>
 										@endif
-										@if($student->studentProfile->is_active)
-											<a href="{{route('college.student_profile.in_active',$student->studentProfile->id)}}" class="btn btn-warning btn-sm">In Active</a>
+										@if($student->is_active)
+											<a href="{{route('college.student.in_active',$student->id)}}" class="btn btn-warning btn-sm">In Active</a>
 										@else 
-											<a href="{{route('college.student_profile.active',$student->studentProfile->id)}}" class="btn btn-success btn-sm">Active</a>
+											<a href="{{route('college.student.active',$student->id)}}" class="btn btn-success btn-sm">Active</a>
 										@endif
 									</div>
 						    	</div>
@@ -201,9 +189,34 @@
 														<option @if($student->studentProfile->college_id == $college->id) selected @endif value="{{$college->id}}">{{$college->name}}</option>
 														@endforeach
 													</select>
-													</select>
 												</div>
 												<div class="col-md-6">
+													<label>Course</label>
+													<select name="course_id" class="form-control">
+														<option selected disabled >Select Course</option>
+														@foreach(App\Models\CollegeCourse::where('user_id',$student->studentProfile->college_id)->get() as $course)
+														<option @if($student->studentProfile->course_id == $course->id) selected @endif value="{{$course->id}}">{{$course->course->name}}</option>
+														@endforeach
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-4">
+													<label>Enrollment Year</label>
+													<select  name="enrollment_year"  class="form-control select-search" data-fouc>
+														<option selected disabled>Select Enrollment Year</option>
+														@for($i = 2015;$i < 2031;$i++)
+														<option @if($student->studentProfile->enrollment_year == $i) selected @endif  value="{{$i}}">{{$i}}</option>
+														@endfor
+													</select>
+												</div>
+												<div class="col-md-4">
+													<label>Roll Number</label>
+													<input type="text" class="form-control" value="{{@$student->studentProfile->roll_number}}"  placeholder="Student Roll Number" name="roll_number">
+												</div>
+												<div class="col-md-4">
 													<label>Phone</label>
 													<input type="text" class="form-control" value="{{@$student->studentProfile->phone}}" placeholder="Student Phone" name="phone">
 												</div>
@@ -275,7 +288,6 @@
 											<th>State</th>
 											<th>City</th>
 											<th>Landmark</th>
-											<th>Lane</th>
 											<th>Town</th>
 											<th>Pin</th>
 										</tr>
@@ -290,7 +302,6 @@
 											<td>{{@$address->state->name}}</td>
 											<td>{{@$address->city->name}}</td>
 											<td>{{$address->landmark}}</td>
-											<td>{{$address->lane}}</td>
 											<td>{{$address->town}}</td>
 											<td>{{$address->pin}}</td>
 										</tr>

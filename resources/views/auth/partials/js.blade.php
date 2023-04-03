@@ -97,4 +97,24 @@
             }
         })
     });
+    $(document).on('change', '#college_id', function (event) {
+        college_id = $(this).val();        
+        event.preventDefault();
+        $.ajax({
+            url: '{{url("get_course_aganist_college")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            data: {
+                'college_id': college_id,
+            },
+        })
+        .done(function (data) {
+            $('#student_course_id').empty();
+            $('#student_course_id').append('<option selected disabled>Select College Course</option>');
+            for (i=0;i<data.length;i++){
+            $('#student_course_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+            }
+        })
+    });
 </script>
