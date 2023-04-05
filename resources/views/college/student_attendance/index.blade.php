@@ -1,4 +1,4 @@
-@extends('admin.layout.index')
+@extends('college.layout.index')
 
 @section('title')
     Student Attendance
