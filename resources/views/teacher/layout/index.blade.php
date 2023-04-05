@@ -161,6 +161,12 @@
 								<span>Dashboard</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('teacher.student_attendance.index')}}" class="nav-link {{Request::is('teacher/student_attendance')?'active':''}}">
+								<i class="icon-home4"></i>
+								<span>Student Attendance</span>
+							</a>
+						</li>
 						
 					</ul>
 				</div>
