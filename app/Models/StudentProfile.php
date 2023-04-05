@@ -13,6 +13,7 @@ class StudentProfile extends Model
         'user_id',
         'college_id',
         'course_id',
+        'semester_id',
         'enrollment_year',
         'roll_number',
         'phone',

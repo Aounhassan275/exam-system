@@ -19,6 +19,14 @@
         </div>
     </div>
     <div class="col-md-3">
+        <label>Semester</label>
+        <div class="form-group form-group-feedback form-group-feedback-left">
+            <select  name="semester_id" id="student_semester_id"  class="form-control select-search" data-fouc>
+                <option selected disabled>Select Semester</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-3">
         <label>Enrollment Year</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <select  name="enrollment_year"  class="form-control select-search" data-fouc>

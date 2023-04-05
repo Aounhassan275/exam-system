@@ -117,4 +117,24 @@
             }
         })
     });
+    $(document).on('change', '#student_course_id', function (event) {
+        course_id = $(this).val();        
+        event.preventDefault();
+        $.ajax({
+            url: '{{url("get_semester_aganist_course")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            data: {
+                'course_id': course_id,
+            },
+        })
+        .done(function (data) {
+            $('#student_semester_id').empty();
+            $('#student_semester_id').append('<option selected disabled>Select Semester</option>');
+            for (i=0;i<data.length;i++){
+            $('#student_semester_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+            }
+        })
+    });
 </script>

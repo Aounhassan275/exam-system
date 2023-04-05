@@ -173,6 +173,12 @@
 								<span>Teacher Profiles</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('college.student_attendance.index')}}" class="nav-link {{Request::is('college/student_attendance')?'active':''}}">
+								<i class="icon-home4"></i>
+								<span>Student Attendance</span>
+							</a>
+						</li>
 						
 					</ul>
 				</div>

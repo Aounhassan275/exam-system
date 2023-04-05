@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\CollegeCourse;
 use App\Models\CollegeProfile;
+use App\Models\Semester;
 use App\Models\State;
 use App\Models\StudentProfile;
 use App\Models\StudentProfileAddress;
+use App\Models\Subject;
 use App\Models\TeacherProfile;
 use App\Models\User;
 use Exception;
@@ -104,6 +106,7 @@ class AuthController extends Controller
                 $this->validate($request,[
                     'college_id' => 'required',
                     'course_id' => 'required',
+                    'semester_id' => 'required',
                     'enrollment_year' => 'required',
                     'roll_number' => 'required',
                     'phone' => 'required',
@@ -217,6 +220,17 @@ class AuthController extends Controller
             $collegCourse[] = ['id' => $course->id,'name' => $course->course->name];
         }
         return response()->json($collegCourse);
-
+    }
+    public function getSemesterAganistCourse(Request $request)
+    {
+        $course = CollegeCourse::find($request->course_id);  
+        $semsters = Semester::where('course_id',$course->course_id)->get();
+        return response()->json($semsters);
+    }
+    public function getSubjectAganistSemester(Request $request)
+    {
+        $semester = Semester::find($request->semester_id);  
+        $subjects = Subject::where('semester_id',$semester->id)->get();
+        return response()->json($subjects);
     }
 }
