@@ -173,9 +173,9 @@
 						<li class="nav-item nav-item-submenu {{Request::is('admin/course*') || Request::is('admin/semester*') || Request::is('admin/subject*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-books"></i> <span>Academics</span></a>
 
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/course*') || Request::is('admin/semester') || Request::is('admin/subject/*') ?'display:block':''}}">
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/course*') || Request::is('admin/semseter') || Request::is('admin/subject/*') ?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('admin.course.index')}}" class="nav-link {{Request::is('admin/course')?'active':''}}">Course</a></li>
-								<li class="nav-item"><a href="{{route('admin.semseter.index')}}" class="nav-link {{Request::is('admin/semester')?'active':''}}">Semester</a></li>
+								<li class="nav-item"><a href="{{route('admin.semseter.index')}}" class="nav-link {{Request::is('admin/semseter')?'active':''}}">Semester</a></li>
 								<li class="nav-item"><a href="{{route('admin.subject.index')}}" class="nav-link {{Request::is('admin/subject')?'active':''}}">Subject</a></li>
 							</ul>
 						</li>
