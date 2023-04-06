@@ -102,6 +102,13 @@ class StudentAttendanceController extends Controller
                 'total_days' => 'required',
                 'subject_id' => 'required',
             ]);
+            $alreadyHaveAttendances = StudentAttendance::where('month',$request->month)->where('subject_id',$request->subject_id)->get();
+            if($alreadyHaveAttendances->count() > 0)
+            {
+                return response([
+                    'message' => "Already have Attendance for this month and subject",
+                ], 200);
+            }
             $studentProfiles = StudentProfile::where('college_id',$request->college_id)
                 ->where('course_id',$request->course_id)->where('semester_id',$request->semester_id)->get();
             if($studentProfiles->count() > 0)
