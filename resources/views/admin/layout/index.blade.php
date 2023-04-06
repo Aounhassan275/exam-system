@@ -161,10 +161,10 @@
 								<span>Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('admin/college*') || Request::is('admin/student*') || Request::is('admin/teacher*') ?'nav-item-open':''}}">
+						<li class="nav-item nav-item-submenu {{Request::is('admin/college*') || Request::is('admin/student') || Request::is('admin/student/*') || Request::is('admin/teacher*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-cart-remove"></i> <span>Users</span></a>
 
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/college*') || Request::is('admin/student*') || Request::is('admin/teacher*')?'display:block':''}}">
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/college*') || Request::is('admin/student') || Request::is('admin/student/*') || Request::is('admin/teacher*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('admin.college.index')}}" class="nav-link {{Request::is('admin/college')?'active':''}}">College</a></li>
 								<li class="nav-item"><a href="{{route('admin.student.index')}}" class="nav-link {{Request::is('admin/student')?'active':''}}">Student</a></li>
 								<li class="nav-item"><a href="{{route('admin.teacher.index')}}" class="nav-link {{Request::is('admin/teacher')?'active':''}}">Teacher</a></li>
