@@ -78,9 +78,7 @@
                     <table class="table datatable-save-state">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Student Subjects</th>
-                                <th>Month</th>
+                                <th>Student Name</th>
                                 <th>Total Days</th>
                                 <th>No. Of Attendance</th>
                                 <th>Percentage(%)</th>
@@ -88,7 +86,7 @@
                         </thead>
                         <tbody id="student_attendances_row">
                             <tr>
-                                <td colspan="6" class="text-center">No Record</td>
+                                <td colspan="4" class="text-center">No Record</td>
                             </tr>
                         </tbody>
                     </table>
