@@ -190,7 +190,7 @@
 						</li>
 						<li class="nav-item">
 							<a href="{{route('admin.student_attendance.index')}}" class="nav-link {{Request::is('admin/student_attendance')?'active':''}}">
-								<i class="icon-sheet"></i>
+								<i class="icon-file-text"></i>
 								<span>Student Attendance</span>
 							</a>
 						</li>
