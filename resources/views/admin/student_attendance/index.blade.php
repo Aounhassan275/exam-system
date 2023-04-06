@@ -74,22 +74,26 @@
     
             <div class="card-body">
                 <div class="row">
-                
-                    <table class="table datatable-save-state">
-                        <thead>
-                            <tr>
-                                <th>Student Name</th>
-                                <th>Total Days</th>
-                                <th>No. Of Attendance</th>
-                                <th>Percentage(%)</th>
-                            </tr>
-                        </thead>
-                        <tbody id="student_attendances_row">
-                            <tr>
-                                <td colspan="4" class="text-center">No Record</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table datatable-save-state">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Total Days</th>
+                                        <th>No. Of Attendance</th>
+                                        <th>Percentage(%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="student_attendances_row">
+                                    <tr>
+                                        <td colspan="4" class="text-center">No Record</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
