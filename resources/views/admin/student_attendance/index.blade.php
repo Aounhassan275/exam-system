@@ -161,6 +161,7 @@
             {
                 $('#student_attendances_row').html(data.html);
             }else{
+                $('#student_attendances_row').html('<tr><td colspan="4" class="text-center">No Record</td></tr>');
                 $('#response').html(data.message);
             }
         })
