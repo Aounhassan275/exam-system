@@ -170,23 +170,14 @@
 								<li class="nav-item"><a href="{{route('admin.teacher.index')}}" class="nav-link {{Request::is('admin/teacher')?'active':''}}">Teacher</a></li>
 							</ul>
 						</li>
-						<li class="nav-item">
-							<a href="{{route('admin.course.index')}}" class="nav-link {{Request::is('admin/course')?'active':''}}">
-								<i class="icon-question4"></i>
-								<span>Course</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="{{route('admin.semester.index')}}" class="nav-link {{Request::is('admin/semester')?'active':''}}">
-								<i class="icon-search4"></i>
-								<span>Semester</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="{{route('admin.subject.index')}}" class="nav-link {{Request::is('admin/subject')?'active':''}}">
-								<i class="icon-books"></i>
-								<span>Subject</span>
-							</a>
+						<li class="nav-item nav-item-submenu {{Request::is('admin/course*') || Request::is('admin/semester*') || Request::is('admin/subject*') ?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="icon-books"></i> <span>Academics</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/course*') || Request::is('admin/semester') || Request::is('admin/subject/*') ?'display:block':''}}">
+								<li class="nav-item"><a href="{{route('admin.course.index')}}" class="nav-link {{Request::is('admin/course')?'active':''}}">Course</a></li>
+								<li class="nav-item"><a href="{{route('admin.semseter.index')}}" class="nav-link {{Request::is('admin/semester')?'active':''}}">Semester</a></li>
+								<li class="nav-item"><a href="{{route('admin.subject.index')}}" class="nav-link {{Request::is('admin/subject')?'active':''}}">Subject</a></li>
+							</ul>
 						</li>
 						<li class="nav-item">
 							<a href="{{route('admin.student_attendance.index')}}" class="nav-link {{Request::is('admin/student_attendance')?'active':''}}">
