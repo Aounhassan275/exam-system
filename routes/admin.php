@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\Admin\StudentAttendanceController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
@@ -62,7 +63,11 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************STATE ROUTE END*************/               
     /*******************CITY ROUTE START*************/       
     Route::resource('city',CityController::class);
-    /*******************CITY ROUTE END*************/            
+    /*******************CITY ROUTE END*************/    
+    /*******************STUDENT ATTENDANCE ROUTE START*************/ 
+    Route::post('get_students_for_attendance',[StudentAttendanceController::class,'getStudents'])->name('student_attendance.get_student');
+    Route::resource('student_attendance',StudentAttendanceController::class);
+    /*******************STUDENT ATTENDANCE ROUTE END*************/        
 });
 /****************** ADMIN MIDDLEWARE PAGES ROUTES END****************/
 ?>
