@@ -132,7 +132,7 @@ Manage Exams
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Add New Subject</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Add New Exam</button>
                 </div>
             </div>
         </form>
