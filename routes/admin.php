@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CollegeCourseController;
 use App\Http\Controllers\Admin\CollegeProfileController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\StudentAttendanceController;
@@ -67,7 +68,10 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************STUDENT ATTENDANCE ROUTE START*************/ 
     Route::post('get_students_for_attendance',[StudentAttendanceController::class,'getStudents'])->name('student_attendance.get_student');
     Route::resource('student_attendance',StudentAttendanceController::class);
-    /*******************STUDENT ATTENDANCE ROUTE END*************/        
+    /*******************STUDENT ATTENDANCE ROUTE END*************/                 
+    /*******************EXAM ROUTE START*************/       
+    Route::resource('exam',ExamController::class);
+    /*******************CITY ROUTE END*************/      
 });
 /****************** ADMIN MIDDLEWARE PAGES ROUTES END****************/
 ?>

@@ -119,12 +119,12 @@
         </a>
     </div>
     <div class="col-sm-4 col-xl-4">
-        {{-- <a href="{{route('admin.resource.index')}}"> --}}
+        <a href="{{route('admin.exam.index')}}">
             <div class="card card-body bg-purple-400 has-bg-image">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0"></h3>
-                        <span class="text-uppercase font-size-xs"></span>
+                        <h3 class="mb-0">{{App\Models\Exam::count()}}</h3>
+                        <span class="text-uppercase font-size-xs">Total Exam</span>
                     </div>
 
                     <div class="ml-3 align-self-center">
@@ -132,7 +132,7 @@
                     </div>
                 </div>
             </div>
-        {{-- </a> --}}
+        </a>
     </div>
 </div>
 @endsection
