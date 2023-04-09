@@ -12,12 +12,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>User Name</th>
-                    <th>User Email</th>
-                    <th>College Name</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>College</th>
                     <th>Verified</th>
                     <th>Status</th>
-                    <th>Action</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -41,13 +40,6 @@
                             <span class="badge badge-success">Active</span>
                         @else
                             <span class="badge badge-danger">Pending</span>
-                        @endif
-                    </td>
-                    <td>
-                        @if($teacher->teacher->is_active)
-                            <a href="{{route('college.student.in_active',$teacher->teacher->id)}}" class="btn btn-warning btn-sm">In Active</a>
-                        @else 
-                            <a href="{{route('college.student.active',$teacher->teacher->id)}}" class="btn btn-success btn-sm">Active</a>
                         @endif
                     </td>
                     <td>

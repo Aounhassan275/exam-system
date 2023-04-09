@@ -12,14 +12,13 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>User Name</th>
-                    <th>User Email</th>
                     <th>College Name</th>
+                    <th>Email</th>
+                    <th>Phone No.</th>
                     <th>Principal Name</th>
                     <th>Year of Establishment</th>
                     <th>Verified</th>
                     <th>Status</th>
-                    <th>Action</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -27,9 +26,9 @@
                 @foreach ($colleges  as $key => $college)
                 <tr>
                     <td>{{$key+1}}</td>
-                    <td>{{$college->name}}</td>
-                    <td>{{$college->email}}</td>
                     <td>{{@$college->collegeProfile->college_name}}</td>
+                    <td>{{$college->email}}</td>
+                    <td>{{@$college->collegeProfile->phone}}</td>
                     <td>{{@$college->collegeProfile->principal_name}}</td>
                     <td>{{@$college->collegeProfile->year_of_establishment}}</td>
                     <td>
@@ -54,13 +53,6 @@
                             <a href="{{route('admin.user.verified',$college->id)}}" class="btn btn-info btn-sm">Verify</a>
                         @endif --}}
                     {{-- </td> --}}
-                    <td>
-                        @if($college->is_active)
-                            <a href="{{route('admin.user.in_active',$college->id)}}" class="btn btn-warning btn-sm">In Active</a>
-                        @else 
-                            <a href="{{route('admin.user.active',$college->id)}}" class="btn btn-success btn-sm">Active</a>
-                        @endif
-                    </td>
                     <td>
                         <a href="{{route('admin.college.show',$college->id)}}" class="btn btn-primary btn-sm">Show</a>
                     </td>

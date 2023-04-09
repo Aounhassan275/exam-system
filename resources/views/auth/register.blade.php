@@ -67,7 +67,7 @@
 									</div>
 									<div class="row">
 										<div class="col-md-4">
-											<label>User Name</label>
+											<label>Name</label>
 											<div class="form-group form-group-feedback form-group-feedback-left">
 												<input type="text" id="name" class="form-control" value="{{old('name')}}" placeholder="username" name="name" required>
 												<div class="form-control-feedback">
@@ -85,7 +85,7 @@
 											</div>
 										</div>
 										<div class="col-md-4">
-											<label>Your Image</label>
+											<label>Profile Image</label>
 											<div class="form-group form-group-feedback form-group-feedback-left">
 												<input class="form-control" type="file" name="image" placeholder="Enter password" required>
 												<div class="form-control-feedback">
@@ -142,7 +142,7 @@
 										@include('auth.partials.teacher_profile_fields')
 									</div>
 									<div class="form-group">
-										<input class="" type="checkbox" name="terms_condiition" required> I accept <a href="{{url('terms_&_condition')}}"> terms and condition policy </a>of Exam System.
+										<input class="" type="checkbox" name="terms_condiition" required> I accept <a href="{{url('terms_&_condition')}}"> terms and condition policy </a>of the University.
 									</div>
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary btn-block">Sign Up <i class="icon-circle-right2 ml-2"></i></button>

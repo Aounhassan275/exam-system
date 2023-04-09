@@ -24,9 +24,10 @@ Manage Exams
             <tr>
                 <th>#</th>
                 <th>Exam Name</th>
-                <th>Semester Name</th>
-                <th>Course Name</th>
+                <th>Course</th>
+                <th>Semester</th>
                 <th>Exam Date</th>
+                <th>Students</th>
                 <th>Action</th>
                 <th>Action</th>
             </tr>
@@ -39,6 +40,7 @@ Manage Exams
                 <td>{{@$exam->course->name}}</td>
                 <td>{{@$exam->semester->name}}</td>
                 <td>{{@$exam->date->format('d M, Y')}}</td>
+                <td>100</td>
                 <td>
                     <a href="{{route('admin.exam.edit',$exam->id)}}" class="btn btn-primary btn-sm">Edit</a>
                 </td>

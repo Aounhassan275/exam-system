@@ -12,15 +12,13 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>User Name</th>
-                    <th>User Email</th>
-                    <th>College Name</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone No</th>
+                    <th>College</th>
                     <th>Father Name</th>
-                    <th>Mother Name</th>
-                    <th>Gender</th>
                     <th>Verified</th>
                     <th>Status</th>
-                    <th>Action</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -31,10 +29,9 @@
                     <td>{{$key+1}}</td>
                     <td>{{$student->name}}</td>
                     <td>{{$student->email}}</td>
+                    <td>{{@$student->studentProfile->phone}}</td>
                     <td>{{@$student->studentProfile->college->name}}</td>
                     <td>{{@$student->studentProfile->fathers_name}}</td>
-                    <td>{{@$student->studentProfile->mother_name}}</td>
-                    <td>{{@$student->studentProfile->gender}}</td>
                     <td>
                         @if($student->is_verified)
                             <span class="badge badge-success">Verified</span>
@@ -47,13 +44,6 @@
                             <span class="badge badge-success">Active</span>
                         @else
                             <span class="badge badge-danger">Pending</span>
-                        @endif
-                    </td>
-                    <td>
-                        @if($student->is_active)
-                            <a href="{{route('admin.user.in_active',$student->id)}}" class="btn btn-warning btn-sm">In Active</a>
-                        @else 
-                            <a href="{{route('admin.user.active',$student->id)}}" class="btn btn-success btn-sm">Active</a>
                         @endif
                     </td>
                     <td>

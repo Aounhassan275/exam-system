@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student Roll Number</label>
+        <label>Roll Number</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="text" class="form-control" value="{{old('roll_number')}}" placeholder="Student Roll Number" name="roll_number">
             <div class="form-control-feedback">
@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student Phone</label>
+        <label>Phone</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="text" minlength="10" maxlength="10" class="form-control" value="{{old('phone')}}" placeholder="Student Phone" name="phone">
             <div class="form-control-feedback">
@@ -56,7 +56,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student Father Name</label>
+        <label>Father's Name</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="text" class="form-control" value="{{old('fathers_name')}}" placeholder="Student Father Name" name="fathers_name">
             <div class="form-control-feedback">
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student Mother Name</label>
+        <label> Mother's Name</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="text" class="form-control" value="{{old('mother_name')}}" placeholder="Student Mother Name" name="mother_name">
             <div class="form-control-feedback">
@@ -74,7 +74,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student Blood Group</label>
+        <label>Blood Group</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             
             <select  name="blood_group"  class="form-control select-search" data-fouc>
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student Date of Birth</label>
+        <label>Date of Birth</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="date" class="form-control" value="{{old('date_of_birth')}}" placeholder="Student Blood Group" name="date_of_birth">
             <div class="form-control-feedback">
@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student Nationality</label>
+        <label>Nationality</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <select  name="nationality"  class="form-control select-search" data-fouc>
                 <option selected value="Indian">Indian</option>
@@ -110,7 +110,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <label>Student gender</label>
+        <label>Gender</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
             <input type="radio" name="gender"  value="Male" class=""> Male 
             <input type="radio" name="gender" value="Female" class=""> Female 
@@ -118,13 +118,13 @@
         </div>
     </div>
     <div class="col-md-12">
-        <p>Temparory Address</p>
+        <p><h5>Present Address :</h5></p>
     </div>
     <input type="hidden" name="type[]" value="Temparory">
     <div class="col-md-3">
-        <label>Address</label>
+        <label>Plot No/Village</label>
         <div class="form-group form-group-feedback form-group-feedback-left">
-            <input type="text" class="form-control" id="temparory_address" value="{{old('address')}}" placeholder="Address" name="addresses[]">
+            <input type="text" class="form-control" id="temparory_address" value="{{old('address')}}" placeholder="Plot No/Village" name="addresses[]">
             <div class="form-control-feedback">
                 <i class="icon-user text-muted"></i>
             </div>
@@ -186,15 +186,15 @@
     </div>
 
     <div class="col-md-12">
-        <p>Permenant Address</p>
+        <p><h5>Permanent Address :</h5></p>
         <input type="checkbox" name="same_as_temparory" id="same_as_temparory"> Same as Temparory
     </div>
     <input type="hidden" name="type[]" value="Permenant">
     <div class="row permenant_fields">
         <div class="col-md-3">
-            <label>Address</label>
+            <label>Plot No/Village</label>
             <div class="form-group form-group-feedback form-group-feedback-left">
-                <input type="text" class="form-control" id="permenant_address" value="{{old('address')}}" placeholder="Address" name="addresses[]">
+                <input type="text" class="form-control" id="permenant_address" value="{{old('address')}}" placeholder="Plot No/Village" name="addresses[]">
                 <div class="form-control-feedback">
                     <i class="icon-user text-muted"></i>
                 </div>

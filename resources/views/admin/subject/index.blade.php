@@ -76,7 +76,7 @@ Manage Subjects
                         <input name="code" type="text" class="form-control" placeholder="Enter Subject Code" required>
                     </div>
                     <div class="form-group">
-                        <label>Subject Type</label>
+                        <label>Subject Type (Theory / Practical)</label>
                         <input name="type" type="text" class="form-control" placeholder="Enter Subject Type" required>
                     </div>
                     <div class="form-group">

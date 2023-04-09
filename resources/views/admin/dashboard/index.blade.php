@@ -12,9 +12,9 @@
             <div class="card card-body">
                 <div class="media mb-0">
                     <div class="media-body">
-                        <h6 class="font-weight-semibold mb-0 text-center">
-                            Welcome To Admin Panel!
-                        </h6>
+                        <h3 class="font-weight-semibold mb-0 text-center">
+                            Madhusudan Law University
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -87,21 +87,7 @@
         </a>
     </div>
 
-    <div class="col-sm-4 col-xl-4">
-        <a href="{{route('admin.semester.index')}}">
-            <div class="card card-body bg-success-400 has-bg-image">
-                <div class="media">
-                    <div class="media-body align-self-center ">
-                    <h3 class="mb-0">{{App\Models\Semester::count()}}</h3>
-                        <span class="text-uppercase font-size-xs">Total Semester </span>
-                    </div>
-                    <div class="ml-3 text-right">
-                        <i class="icon-bubbles4 icon-3x opacity-75"></i>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
+
     <div class="col-sm-4 col-xl-4">
         <a href="{{route('admin.subject.index')}}">
             <div class="card card-body bg-teal-400 has-bg-image">

@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    Add Semester
+Manage Semester
 @endsection
 
 @section('content')

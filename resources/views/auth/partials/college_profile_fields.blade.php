@@ -26,7 +26,7 @@
     </div>
 </div>
 <div class="col-md-3">
-    <label>Affillicate Document</label>
+    <label>Affiliation Document</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
         <input type="file" class="form-control"  placeholder="Principal Name" name="document">
         <div class="form-control-feedback">
@@ -46,17 +46,17 @@
     </div>
 </div>
 <div class="col-md-3">
-    <label>City</label>
+    <label>District</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
         <select  name="city_id" id="college_city_id"  class="form-control select-search" data-fouc>
-            <option selected disabled>Select City</option>
+            <option selected disabled>Select District</option>
         </select>
     </div>
 </div>
 <div class="col-md-3">
-    <label>District</label>
+    <label>City</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
-        <input type="text" class="form-control" value="{{old('district')}}" placeholder="District" name="district">
+        <input type="text" class="form-control" value="{{old('district')}}" placeholder="City" name="district">
         <div class="form-control-feedback">
             <i class="icon-user text-muted"></i>
         </div>
