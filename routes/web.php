@@ -33,6 +33,7 @@ Route::post('get_state_against_countries',[AuthController::class,'getStateAgains
 Route::post('get_course_aganist_college',[AuthController::class,'getCourseAganistCollege'])->name('get_course_aganist_college');
 Route::post('get_semester_aganist_course',[AuthController::class,'getSemesterAganistCourse'])->name('get_semester_aganist_course');
 Route::post('get_subject_aganist_semester',[AuthController::class,'getSubjectAganistSemester'])->name('get_subject_aganist_semester');
+Route::get('get_course_fields',[AuthController::class,'getCourseFields'])->name('get_course_fields');
 
 
 /*******************ADMIN ROUTE START*************/       

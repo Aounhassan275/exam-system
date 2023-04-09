@@ -83,11 +83,12 @@
                                         <th>Total Days</th>
                                         <th>No. Of Attendance</th>
                                         <th>Percentage(%)</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="student_attendances_row">
                                     <tr>
-                                        <td colspan="4" class="text-center">No Record</td>
+                                        <td colspan="5" class="text-center">No Record</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -172,5 +173,36 @@
          $('#overlay').fadeOut();
        });
     });
+    function forcedAllowed(index)
+    {
+        $('#response').html('');
+        event.preventDefault();
+        $.ajax({
+            url: '{{route("admin.student_attendance.force_allowed")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            data: {
+                course_id : $('#course_id').val(),
+                semester_id : $('#semester_id').val(),
+                student_id : index
+            },
+        })
+        .done(function (data) {
+            if(data.success)
+            {
+                $('#allowed_student_'+ index).attr("hidden",true);
+                $('#force_allowed_'+ index).attr("hidden",false);
+            }else{
+                $('#response').html(data.message);
+            }
+        })
+       .fail(function(response) {
+          alert("error");
+       })
+       .always(function() {
+         $('#overlay').fadeOut();
+       });
+    }
 </script>
 @endsection

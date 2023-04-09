@@ -121,9 +121,9 @@ class AuthController extends Controller
             }else if($request->role_id == 4)
             {
                 $this->validate($request,[
-                    'teacher_college_id' => 'required'
+                    'teacher_college_id' => 'required',
+                    'teacher_phone' => 'required'
                 ]);
-
             }
             if($request->password != $request->confirm_password)
             {
@@ -187,6 +187,7 @@ class AuthController extends Controller
             {
                 TeacherProfile::create([
                     'college_id' => $request->teacher_college_id,
+                    'phone' => $request->teacher_phone,
                     'user_id' => $user->id,
                 ]);
             }

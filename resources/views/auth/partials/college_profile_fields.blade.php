@@ -71,7 +71,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-3">
+<div class="col-md-6">
     <label>Address</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
         <input type="text" class="form-control" value="{{old('address')}}" placeholder="Address" name="address">
@@ -80,8 +80,12 @@
         </div>
     </div>
 </div>
-<div class="col-md-4">
-    <label>Course 1</label>
+<div class="col-md-3">
+    <br>
+    <button class="btn btn-sm btn-primary" type="button" id="add_row_for_courses">Add More Course Field</button>
+</div>
+<div class="col-md-6">
+    <label>Course </label>
     <div class="form-group form-group-feedback form-group-feedback-left">
         <select  name="course_ids[]"  class="form-control select-search" data-fouc>
             <option selected disabled>Select Course</option>
@@ -91,48 +95,8 @@
         </select>
     </div>
 </div>
-<div class="col-md-4">
-    <label>Course 1 Seats</label>
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <input type="number" class="form-control" value="" placeholder="Course Seats" name="course_seats[]">
-        <div class="form-control-feedback">
-            <i class="icon-user text-muted"></i>
-        </div>
-    </div>
-</div>
-<div class="col-md-4">
-    <label>Course 2</label>
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <select  name="course_ids[]"  class="form-control select-search" data-fouc>
-            <option selected disabled>Select Course</option>
-            @foreach(App\Models\Course::all() as $course)
-            <option value="{{$course->id}}">{{$course->name}}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
-<div class="col-md-4">
-    <label>Course 2 Seats</label>
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <input type="number" class="form-control" value="" placeholder="Course Seats" name="course_seats[]">
-        <div class="form-control-feedback">
-            <i class="icon-user text-muted"></i>
-        </div>
-    </div>
-</div>
-<div class="col-md-4">
-    <label>Course 3</label>
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <select  name="course_ids[]"  class="form-control select-search" data-fouc>
-            <option selected disabled>Select Course</option>
-            @foreach(App\Models\Course::all() as $course)
-            <option value="{{$course->id}}">{{$course->name}}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
-<div class="col-md-4">
-    <label>Course 3 Seats</label>
+<div class="col-md-6">
+    <label>Course Seats</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
         <input type="number" class="form-control" value="" placeholder="Course Seats" name="course_seats[]">
         <div class="form-control-feedback">

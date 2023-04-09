@@ -119,15 +119,12 @@
 										<div class="col-md-4">
 											<label>Role</label>
 											<div class="form-group form-group-feedback form-group-feedback-left">
-												<select name="role_id" class="form-control" id="role_id" required>
+												<select name="role_id" class="form-control select-search" id="role_id" required>
 													<option>Select</option>
 													@foreach(App\Models\Role::where('name','!=','Admin')->get() as $role)
 													<option value="{{$role->id}}">{{$role->name}}</option>
 													@endforeach
 												</select>
-												<div class="form-control-feedback">
-													<i class="icon-user text-muted"></i>
-												</div>
 											</div>
 										</div>
 
@@ -135,6 +132,7 @@
 									<div class="row all_college_fields" {{old('role_id')?old('role_id') == 2:'hidden'}}>
 										@include('auth.partials.college_profile_fields')
 									</div>
+									<div id="course_fields"></div>
 									<div class="row student_profile_fields" {{old('role_id')?old('role_id') == 3:'hidden'}}>
 										@include('auth.partials.student_profile_fields')
 									</div>
@@ -163,6 +161,31 @@
 		</div>
 		<!-- /main content -->
 
+	</div>
+	<div id="course_fields_for_html" style="display:none;">
+		<div class="row">
+			<div class="col-md-6">
+				<label>Course </label>
+				<div class="form-group form-group-feedback form-group-feedback-left">
+					<select  name="course_ids[]"  class="form-control select-2">
+						<option selected disabled>Select Course</option>
+						@foreach(App\Models\Course::all() as $course)
+						<option value="{{$course->id}}">{{$course->name}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<label>Course Seats</label>
+				<div class="form-group form-group-feedback form-group-feedback-left">
+					<input type="number" class="form-control" value="" placeholder="Course Seats" name="course_seats[]">
+					<div class="form-control-feedback">
+						<i class="icon-user text-muted"></i>
+					</div>
+				</div>
+			</div>
+
+		</div>
 	</div>
 	<!-- /page content -->
     <script src="{{asset('user_asset/assets/js/toastr.js')}}"></script>
@@ -258,6 +281,11 @@
 				$('.student_profile_fields').attr("hidden",true);
 
 			}
+        });
+        $(document).on('click', '#add_row_for_courses', function () {
+			html = $('#course_fields_for_html').html();
+			$('#course_fields').append(html);
+			$('.select-2').addClass('select-search');
         });
         $(document).on('change', '#same_as_temparory', function (event) {
             if(this.checked){

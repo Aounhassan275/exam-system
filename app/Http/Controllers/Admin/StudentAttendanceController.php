@@ -116,4 +116,32 @@ class StudentAttendanceController extends Controller
 
         }
     }
+    public function forceAllowed(Request $request)
+    {
+        try{
+            $this->validate($request,[
+                'course_id' => 'required',
+                'semester_id' => 'required',
+                'student_id' => 'required'
+            ]);
+            
+            $studentAttendances = StudentAttendance::where('student_id',$request->student_id)
+            ->where('course_id',$request->course_id)->where('semester_id',$request->semester_id)->get();
+            foreach($studentAttendances as $studentAttendance)
+            {
+                $studentAttendance->update([
+                    'forced_allow_exam' => true
+                ]);
+            }
+            return response([
+                'success' => true,
+            ], 200);
+        }catch (Exception $e)
+        {
+            return response([
+                'message' => $e->getMessage(),
+            ], 200);
+
+        }
+    }
 }

@@ -26,28 +26,6 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-md-3">
-                        <label>Month</label>
-                        <select  name="month" class="form-control select-search" data-fouc required>
-                            <option selected disabled>Select Month</option>
-                            <option value="Jan">Jan</option>
-                            <option value="Feb">Feb</option>
-                            <option value="March">March</option>
-                            <option value="April">April</option>
-                            <option value="May">May</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="Aug">Aug</option>
-                            <option value="Sep">Sep</option>
-                            <option value="Oct">Oct</option>
-                            <option value="Nov">Nov</option>
-                            <option value="Dec">Dec</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Total Days</label>
-                        <input name="total_days" type="number" class="form-control" placeholder="Enter Total Days" required>
-                    </div>
-                    <div class="form-group col-md-3">
                         <label>Course</label>
                         <select  name="course_id" id="course_id" class="form-control select-search" data-fouc>
                             <option selected disabled>Select Course</option>
@@ -67,6 +45,28 @@
                         <select  name="subject_id" id="subject_id"  class="form-control select-search" required data-fouc>
                             <option selected disabled>Select Subject</option>
                         </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Month</label>
+                        <select  name="month" class="form-control select-search" data-fouc required>
+                            <option selected disabled>Select Month</option>
+                            <option value="Jan">Jan</option>
+                            <option value="Feb">Feb</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="Aug">Aug</option>
+                            <option value="Sep">Sep</option>
+                            <option value="Oct">Oct</option>
+                            <option value="Nov">Nov</option>
+                            <option value="Dec">Dec</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Total Classes</label>
+                        <input name="total_days" type="number" class="form-control" placeholder="Enter Total Classes" required>
                     </div>
                 </div>
                 <p id="response" style="color:red;"></p>

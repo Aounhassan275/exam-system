@@ -18,7 +18,8 @@ class StudentAttendance extends Model
         'student_id',
         'total_days',
         'attended_days',
-        'month'
+        'month',
+        'forced_allow_exam'
     ];
 
     public function student()

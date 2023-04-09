@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************CITY ROUTE END*************/    
     /*******************STUDENT ATTENDANCE ROUTE START*************/ 
     Route::post('get_students_for_attendance',[StudentAttendanceController::class,'getStudents'])->name('student_attendance.get_student');
+    Route::post('force_allowed',[StudentAttendanceController::class,'forceAllowed'])->name('student_attendance.force_allowed');
     Route::resource('student_attendance',StudentAttendanceController::class);
     /*******************STUDENT ATTENDANCE ROUTE END*************/                 
     /*******************EXAM ROUTE START*************/       
