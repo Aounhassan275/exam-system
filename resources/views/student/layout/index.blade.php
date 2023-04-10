@@ -161,6 +161,12 @@
 								<span>Dashboard</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('student.exam.index')}}" class="nav-link {{Request::is('student/exam')?'active':''}}">
+								<i class="icon-compose"></i>
+								<span>Exam</span>
+							</a>
+						</li>
 						
 					</ul>
 				</div>

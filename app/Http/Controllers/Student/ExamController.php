@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
+use App\Models\StudentAttendance;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
@@ -15,8 +18,33 @@ class ExamController extends Controller
      */
     public function index()
     {
-        // $exams = Exam::where('')
-        // return view('student.exam.index',compact('exams'));
+        $exams = Exam::where('course_id',Auth::user()->studentProfile->course_id)
+        ->where('semester_id',Auth::user()->studentProfile->semester_id)
+        ->whereDate('form_start_date','<=',date('Y-m-d'))
+        ->whereDate('form_last_date','>=',date('Y-m-d'))
+        ->get();
+        $allExams = [];
+        $studentAttendances = StudentAttendance::where('student_id',Auth::user()->id)
+        ->where('course_id',Auth::user()->studentProfile->course_id)->where('semester_id',Auth::user()->studentProfile->semester_id)->get()->groupby('student_id');
+        if(count($studentAttendances) > 0)
+        {
+            $studentAttendance = $studentAttendances->first();
+            if(count($studentAttendance) > 0)
+            {
+                $totalPercentage = round($studentAttendance->sum('attended_days') / $studentAttendance->sum('total_days') * 100, 2);
+                $isAllowed = $studentAttendance->first()->forced_allow_exam;
+                foreach($exams as $exam)
+                {
+                    if($totalPercentage >= $exam->attendance_required || $isAllowed)
+                    {
+                        $allExams[] = $exam;
+                    }
+                }
+    
+            }
+
+        }
+        return view('student.exam.index',compact('allExams'));
     }
 
     /**
