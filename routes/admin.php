@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\CollegeProfileController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\ExamController;
+use App\Http\Controllers\Admin\GradeCategoryController;
+use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\StudentAttendanceController;
@@ -72,7 +74,13 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************STUDENT ATTENDANCE ROUTE END*************/                 
     /*******************EXAM ROUTE START*************/       
     Route::resource('exam',ExamController::class);
-    /*******************CITY ROUTE END*************/      
+    /*******************EXAM ROUTE END*************/      
+    /*******************GRADE CATEGORY ROUTE START*************/       
+    Route::resource('grade_category',GradeCategoryController::class);
+    /*******************GRADE CATEGORY ROUTE END*************/   
+    /*******************GRADE ROUTE START*************/       
+    Route::resource('grade',GradeController::class);
+    /*******************GRADE  ROUTE END*************/   
 });
 /****************** ADMIN MIDDLEWARE PAGES ROUTES END****************/
 ?>
