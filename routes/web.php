@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\PaymentGateway;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -64,4 +65,7 @@ Route::get('cd', function() {
     Artisan::call('migrate');
     Artisan::call('view:clear');
     return 'DONE';
+  });
+  Route::get('test', function() {
+    PaymentGateway::proccess();		
   });
