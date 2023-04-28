@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helpers;
 use App\Models\City;
 use App\Models\CollegeCourse;
 use App\Models\CollegeProfile;
+use App\Models\Role;
 use App\Models\Semester;
 use App\Models\State;
 use App\Models\StudentProfile;
@@ -50,6 +52,10 @@ class AuthController extends Controller
                 else if($user->role->name == 'College')
                 {
                     return redirect()->intended(route('college.dashboard.index'));
+                }
+                else if($user->role->name == 'Prospect')
+                {
+                    return redirect()->intended(route('prospect.dashboard.index'));
                 }
                 else
                 {
@@ -117,7 +123,10 @@ class AuthController extends Controller
                     'gender' => 'required',
                     'nationality' => 'required',
                 ]);
-
+                $prospect_role_id = Role::where('name','Prospect')->first()->id;
+                $request->merge([
+                    'role_id' => $prospect_role_id
+                ]);
             }else if($request->role_id == 4)
             {
                 $this->validate($request,[

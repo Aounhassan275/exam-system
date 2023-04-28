@@ -73,6 +73,22 @@ class User extends Authenticatable
     {
         return $this->hasMany(StudentProfileAddress::class);
     }
+    public function studentDocuments()
+    {
+        return $this->hasMany(StudentDocument::class);
+    }
+    public function studentPermenantAddress()
+    {
+        return StudentProfileAddress::where('user_id',$this->id)->where('type','Permenant')->first();
+    }
+    public function studentTemparoryAddress()
+    {
+        return StudentProfileAddress::where('user_id',$this->id)->where('type','Temparory')->first();
+    }
+    public function studentAcademicQualifications()
+    {
+        return $this->hasMany(StudentAcademicQualification::class);
+    }
     public function getRole()
     {
         return $this->role->name;

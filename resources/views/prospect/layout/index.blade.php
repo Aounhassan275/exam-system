@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>{{Auth::user()->name}} Admin Panel | Exam System</title>
+	<title>{{Auth::user()->name}} Prospect Panel | Exam System</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -44,6 +44,9 @@
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/datatables_basic.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_layouts.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/dashboard.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_wizard.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/plugins/forms/wizards/steps.min.js')}}"></script>
+
 	<!-- /theme JS files -->
 	
 	<!-- Theme JS files -->
@@ -60,7 +63,7 @@
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
 			<a href="{{url('/')}}" class="text-light">
-				<h3 class="m-0"><b>Admin Panel Menu</b></h3>
+				<h3 class="m-0"><b>Prospect Panel Menu</b></h3>
 			</a>
 		</div>
 
@@ -132,12 +135,12 @@
 					<div class="card-body">
 						<div class="media">
 							<div class="mr-3">
-								{{--  <a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a>  --}}
+								 <a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a> 
 							</div>
 
 							<div class="media-body">
 								<div class="media-title font-weight-semibold">{{Auth::user()->name}}</div>
-								<div class="font-size-xs opacity-50">MLU
+								<div class="font-size-xs opacity-50">Exam System Inc.
 								</div>
 							</div>
 
@@ -154,56 +157,14 @@
 				<div class="card card-sidebar-mobile">
 					<ul class="nav nav-sidebar" data-nav-type="accordion">
 							<!-- Main -->
-						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Admin Panel</div> <i class="icon-menu" title="Main"></i></li>
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Prospect Panel</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="{{route('admin.dashboard.index')}}" class="nav-link {{Request::is('admin/dashboard')?'active':''}}">
+							<a href="{{route('prospect.dashboard.index')}}" class="nav-link {{Request::is('prospect/dashboard')?'active':''}}">
 								<i class="icon-home4"></i>
 								<span>Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('admin/college*') || Request::is('admin/student') || Request::is('admin/student/*') || Request::is('admin/teacher*') ?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="icon-cart-remove"></i> <span>Users</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/college*') || Request::is('admin/student') || Request::is('admin/student/*') || Request::is('admin/teacher*')?'display:block':''}}">
-								<li class="nav-item"><a href="{{route('admin.college.index')}}" class="nav-link {{Request::is('admin/college')?'active':''}}">College</a></li>
-								<li class="nav-item"><a href="{{route('admin.student.index')}}" class="nav-link {{Request::is('admin/student')?'active':''}}">Student</a></li>
-								<li class="nav-item"><a href="{{route('admin.teacher.index')}}" class="nav-link {{Request::is('admin/teacher')?'active':''}}">Teacher</a></li>
-							</ul>
-						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('admin/course*') || Request::is('admin/semester*') || Request::is('admin/subject*') ?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="icon-books"></i> <span>Academics</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/course*') || Request::is('admin/semester') || Request::is('admin/subject/*') ?'display:block':''}}">
-								<li class="nav-item"><a href="{{route('admin.course.index')}}" class="nav-link {{Request::is('admin/course')?'active':''}}">Course</a></li>
-								<li class="nav-item"><a href="{{route('admin.semester.index')}}" class="nav-link {{Request::is('admin/semester')?'active':''}}">Semester</a></li>
-								<li class="nav-item"><a href="{{route('admin.subject.index')}}" class="nav-link {{Request::is('admin/subject')?'active':''}}">Subject</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a href="{{route('admin.student_attendance.index')}}" class="nav-link {{Request::is('admin/student_attendance')?'active':''}}">
-								<i class="icon-file-text"></i>
-								<span>Student Attendance</span>
-							</a>
-						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('admin/exam*') || Request::is('admin/grade*') || Request::is('admin/grade_category*')  ?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="icon-compose"></i> <span>Exam</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/exam*')?'display:block':''}}">
-								<li class="nav-item"><a href="{{route('admin.exam.index')}}" class="nav-link {{Request::is('admin/exam')?'active':''}}">Exam</a></li>
-								<li class="nav-item"><a href="{{route('admin.grade_category.index')}}" class="nav-link {{Request::is('admin/grade_category')?'active':''}}">Grade Category</a></li>
-								<li class="nav-item"><a href="{{route('admin.grade.index')}}" class="nav-link {{Request::is('admin/grade')?'active':''}}">Grade</a></li>
-							</ul>
-						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('admin/country*') || Request::is('admin/state*') || Request::is('admin/city*')  || Request::is('admin/police_station*') ?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="icon-map"></i> <span>Locations</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/country*') || Request::is('admin/state*') || Request::is('admin/city*') || Request::is('admin/police_station*')?'display:block':''}}">
-								<li class="nav-item"><a href="{{route('admin.country.index')}}" class="nav-link {{Request::is('admin/country')?'active':''}}">Country</a></li>
-								<li class="nav-item"><a href="{{route('admin.state.index')}}" class="nav-link {{Request::is('admin/state')?'active':''}}">State</a></li>
-								<li class="nav-item"><a href="{{route('admin.city.index')}}" class="nav-link {{Request::is('admin/city')?'active':''}}">City</a></li>
-								<li class="nav-item"><a href="{{route('admin.police_station.index')}}" class="nav-link {{Request::is('admin/police_station')?'active':''}}">Police Station</a></li>
-							</ul>
-						</li>
+						
 					</ul>
 				</div>
 				<!-- /main navigation -->
@@ -222,7 +183,7 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><a href="{{route('admin.dashboard.index')}}"><i class="icon-arrow-left52 mr-2"></i></a><span class="font-weight-semibold">@yield('title')</span></h4>
+						<h4><a href="{{route('prospect.dashboard.index')}}"><i class="icon-arrow-left52 mr-2"></i></a><span class="font-weight-semibold">@yield('title')</span></h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 

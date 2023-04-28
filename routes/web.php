@@ -3,6 +3,7 @@
 use App\Helpers\PaymentGateway;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,7 +52,11 @@ include __DIR__ . '/college.php';
 
 /*******************TEACHER ROUTE START*************/       
 include __DIR__ . '/teacher.php';
-/*******************TEACHER ROUTE END*************/     
+/*******************TEACHER ROUTE END*************/  
+
+/*******************Prospect ROUTE START*************/       
+include __DIR__ . '/prospect.php';
+/*******************Prospect ROUTE END*************/     
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('cd', function() {
     Artisan::call('config:cache');
@@ -68,4 +73,21 @@ Route::get('cd', function() {
   });
   Route::get('test', function() {
     PaymentGateway::proccess();		
+  });
+  Route::get('add_categories', function() {
+    
+    DB::table('document_categories')->insert([
+      [ 'name' => 'Passport Size Photograph'],
+      [ 'name' => 'Full Signatue of the Candidate'],
+      [ 'name' => 'Full Signatue of the Father'],
+      [ 'name' => 'Full Signatue of the Mother'],
+      [ 'name' => 'Full Signatue of the Guradian'],
+      [ 'name' => 'Aadhar Card'],
+      [ 'name' => 'Citizen Certificate'],
+      [ 'name' => 'Caste Certificate From the Appropriate Authority'],
+      [ 'name' => 'Physically Handicapped Ceertificate with Percentage of Disability from the Appropriate'],
+      [ 'name' => 'Ex-Serviceman Certificate'],
+      [ 'name' => '10th or Equivalent Certificate'],
+      [ 'name' => '10th or Equivalent Martsheet'],
+  ]);		
   });
