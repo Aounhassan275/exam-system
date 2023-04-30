@@ -79,7 +79,7 @@ class DashboardController extends Controller
                 'landmark' => @$request->landmark[$key],
                 'village' => @$request->village[$key],
                 'post_office' => @$request->post_office[$key],
-                'police_station_id' => @$request->police_station_id[$key],
+                'police_station' => @$request->police_station[$key],
                 'country_id' => @$country_id,
                 'state_id' => @$state_id,
                 'pin' => @$request->pin[$key],
@@ -93,11 +93,22 @@ class DashboardController extends Controller
     public function studentDocumentUpdate(Request $request)
     {
         try{
-            $this->validate($request,[
-                'document' => 'required|mimes:pdf|max:30000',
-                'user_id' => 'required',
-                'document_category_id' => 'required'
-            ]);
+            if($request->document_category_id == '1' || $request->document_category_id == '2' || $request->document_category_id == '3' )
+            {
+                $this->validate($request,[
+                    'document' => 'required|image',
+                    'user_id' => 'required',
+                    'document_category_id' => 'required'
+                ]);
+
+            }else{
+                $this->validate($request,[
+                    'document' => 'required|mimes:pdf|max:30000',
+                    'user_id' => 'required',
+                    'document_category_id' => 'required'
+                ]);
+
+            }
             $category = DocumentCategory::find($request->document_category_id);
             if($category->document())
             {

@@ -7,19 +7,19 @@
             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" name="first_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="first_name" value="" class="form-control" placeholder="John Doe">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Middle Name</label>
-                <input type="text" name="middle_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="middle_name" value="" class="form-control" placeholder="John Doe">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" name="last_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="last_name" value="" class="form-control" placeholder="John Doe">
             </div>
         </div>
     </div>
@@ -28,19 +28,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" value="" name="father_first_name" class="form-control" placeholder="John Doe">
+                <input type="text" required value="" name="father_first_name" class="form-control" placeholder="John Doe">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Middle Name</label>
-                <input type="text" value="" name="father_middle_name" class="form-control" placeholder="John Doe">
+                <input type="text" required value="" name="father_middle_name" class="form-control" placeholder="John Doe">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" value="" name="father_last_name" class="form-control" placeholder="John Doe">
+                <input type="text" required value="" name="father_last_name" class="form-control" placeholder="John Doe">
             </div>
         </div>
     </div>
@@ -49,19 +49,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" name="mother_first_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="mother_first_name" value="" class="form-control" placeholder="John Doe">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Middle Name</label>
-                <input type="text" name="mother_middle_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="mother_middle_name" value="" class="form-control" placeholder="John Doe">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" name="mother_last_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="mother_last_name" value="" class="form-control" placeholder="John Doe">
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <select  name="day" class="form-control select-search" data-fouc required>
-                            <option selected disabled>DD</option>
+                            <option disabled>DD</option>
                             @for($day = 1;$day <= 31;$day++)
                             <option value="{{$day}}">{{$day}}</option>
                             @endfor
@@ -105,7 +105,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <select  name="month" class="form-control select-search" data-fouc required>
-                            <option selected disabled>MM</option>
+                            <option  value="" selected disabled>MM</option>
                             @for($month = 1;$month <= 12;$month++)
                             <option value="{{$month}}">{{$month}}</option>
                             @endfor
@@ -114,8 +114,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <select  name="year" class="form-control select-search" data-fouc required>
-                            <option selected disabled>YYYY</option>
+                        <select   name="year" class="form-control select-search" data-fouc required>
+                            <option value="" selected disabled>YYYY</option>
                             @for($year = 1980;$year <= 2015;$year++)
                             <option value="{{$year}}">{{$year}}</option>
                             @endfor
@@ -130,19 +130,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Contact No.</label>
-                        <input type="text" name="phone" value="" class="form-control" placeholder="Contact No.">
+                        <input type="text" required name="phone" value="" class="form-control" placeholder="Contact No.">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Alternative Contact No.</label>
-                        <input type="text" name="alternative_phone" value="" class="form-control" placeholder="Alternative Contact No.">
+                        <input type="text" required name="alternative_phone" value="" class="form-control" placeholder="Alternative Contact No.">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" name="email" value="{{Auth::user()->email}}" readonly class="form-control" placeholder="Contact No.">
+                        <input type="text" required name="email" value="{{Auth::user()->email}}" readonly class="form-control" placeholder="Contact No.">
                     </div>
                 </div>
     
@@ -153,17 +153,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label>Aadhar No.</label>
-                <input type="text" name="aadhar_no" class="form-control" value=""  placeholder="Aadhar No.">
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label>Security Question</label>
-                <select  name="security_question" class="form-control select-search" data-fouc>
-                    <option selected disabled>Select Security Question</option>
-                    <option value="Name of Your Birth Place">Name of Your Birth Place</option>
-                    <option value="Name of Your First School">Name of Your First School</option>
-                </select>
+                <input type="text" maxlength="12" required minlength="12" name="aadhar_no" class="form-control" value=""  placeholder="Aadhar No.">
             </div>
         </div>
         {{-- <div class="col-md-3">
@@ -180,7 +170,7 @@
         </div> --}}
     </div>
     <div class="text-right" style="margin-top:10px;">
-        <button type="button" id="student-profile-create-button" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
+        <button type="submit" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
     </div> 
 
 </form>

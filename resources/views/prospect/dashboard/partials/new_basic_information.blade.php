@@ -54,11 +54,14 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Nationality</label>
-                    <br>
-                    <input type="radio" name="nationality" checked value="Indian" @if(Auth::user()->studentProfile->nationality == 'Indian') checked @endif  class=""> Indian  
+                    <select  name="nationality" id="nationality"  class="form-control select-search" data-fouc>
+                        <option disabled>Select Nationality</option>
+                        <option selected value="Indian">Indian</option>
+                        <option  value="Others">Others</option>
+                    </select>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 other_nationality" style="display:none;">
                 <div class="form-group">
                     <label>Other Nationality 1</label>
                     <input type="text" value="{{Auth::user()->studentProfile->other_nationality_1}}" name="other_nationality_1" class="form-control" placeholder="Other Nationality" class="">  
@@ -66,14 +69,8 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label>Other Nationality 2</label>
-                    <input type="text" name="other_nationality_2"  value="{{Auth::user()->studentProfile->other_nationality_2}}"class="form-control" placeholder="Other Nationality 2" class="">  
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
                     <label>Mother Tongue</label>
-                    <input type="text" name="mother_tongue"  value="{{Auth::user()->studentProfile->mother_tongue}}"class="form-control" placeholder="Mother Tongue" class="">  
+                    <input type="text" required name="mother_tongue"  value="{{Auth::user()->studentProfile->mother_tongue}}"class="form-control" placeholder="Mother Tongue" class="">  
                 </div>
             </div>
         </div>
@@ -83,60 +80,61 @@
                 <input type="hidden" name="type[]" value="Temparory">
                 <div class="form-group">
                     <label>Holding No. / Premise's Name</label>
-                    <input type="text" value="" name="premise_name[]" id="temporary_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
+                    <input type="text" required value="" name="premise_name[]" id="temporary_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Plot No.</label>
-                    <input type="text" name="plot_no[]" value="" id="temporary_plot_no" class="form-control" placeholder="Plot No.">
+                    <input type="text" required name="plot_no[]" value="" id="temporary_plot_no" class="form-control" placeholder="Plot No.">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Locality <small style="color:red;">*</small></label>
-                    <input type="text" name="locality[]" value="" id="temporary_locality" class="form-control" placeholder="Locality">
+                    <input type="text" required name="locality[]" value="" id="temporary_locality" class="form-control" placeholder="Locality">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Sub Locality</label>
-                    <input type="text" name="sub_locality[]" value="" id="temporary_sub_locality" class="form-control" placeholder="Sub Locality">
+                    <input type="text" required name="sub_locality[]" value="" id="temporary_sub_locality" class="form-control" placeholder="Sub Locality">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Land Mark</label>
-                    <input type="text" name="landmark[]" value="" id="temparory_land_mark"  class="form-control" placeholder="Land Mark">
+                    <input type="text" required name="landmark[]" value="" id="temparory_land_mark"  class="form-control" placeholder="Land Mark">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Village</label>
-                    <input type="text" name="village[]"  value="" id="temparory_village"  class="form-control" placeholder="Village">
+                    <input type="text" required name="village[]"  value="" id="temparory_village"  class="form-control" placeholder="Village">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Post Office <small style="color:red;">*</small></label>
-                    <input type="text" name="post_office[]" value=""  id="temparory_post_office"  class="form-control" placeholder="Post Office">
+                    <input type="text" required name="post_office[]" value=""  id="temparory_post_office"  class="form-control" placeholder="Post Office">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Police Station <small style="color:red;">*</small></label>
-                    <select  name="police_station_id[]" id="temparory_police_station_id"  class="form-control select-search" data-fouc>
+                    <input type="text"  name="police_station[]" id="temparory_police_station" class="form-control" required>
+                    {{-- <select  name="police_station[]" id="temparory_police_station_id"  class="form-control select-search" data-fouc>
                         <option selected disabled>Select Police Station</option>
                         @foreach(App\Models\PoliceStation::all() as $police_station)
                         <option value="{{$police_station->id}}">{{$police_station->name}}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Country <small style="color:red;">*</small></label>
-                    <select  name="country_id[]" id="temparory_country_id"  class="form-control select-search" data-fouc>
+                    <select  name="country_id[]" required id="temparory_country_id"  class="form-control select-search" data-fouc>
                         <option selected disabled>Select Country</option>
                         @foreach(App\Models\Country::all() as $country)
                         <option value="{{$country->id}}">{{$country->name}}</option>
@@ -147,14 +145,14 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>State <small style="color:red;">*</small></label>
-                    <select  name="state_id[]" id="temparory_state_id"  class="form-control select-search" data-fouc>
+                    <select  name="state_id[]" id="temparory_state_id" required class="form-control select-search" data-fouc>
                     </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Pin Code<small style="color:red;">*</small></label>
-                    <input type="text" name="pin[]" value="" id="temparory_pin" class="form-control" placeholder="Pin Code">
+                    <input type="text" name="pin[]" value="" required id="temparory_pin" class="form-control" placeholder="Pin Code">
                 </div>
             </div>
         </div>
@@ -167,60 +165,61 @@
                 <div class="form-group">
                     <input type="hidden" name="type[]" value="Permenant">
                     <label>Holding No. / Premise's Name</label>
-                    <input type="text" name="premise_name[]" value="" id="permenant_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
+                    <input type="text" required name="premise_name[]" value="" id="permenant_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Plot No.</label>
-                    <input type="text" name="plot_no[]" value="" id="permenant_plot_no" class="form-control" placeholder="Plot No.">
+                    <input type="text" required name="plot_no[]" value="" id="permenant_plot_no" class="form-control" placeholder="Plot No.">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Locality <small style="color:red;">*</small></label>
-                    <input type="text" name="locality[]" value="" id="permenant_locality" class="form-control" placeholder="Locality">
+                    <input type="text" required name="locality[]" value="" id="permenant_locality" class="form-control" placeholder="Locality">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Sub Locality</label>
-                    <input type="text" name="sub_locality[]" value="" id="permenant_sub_locality" class="form-control" placeholder="Sub Locality">
+                    <input type="text" required name="sub_locality[]" value="" id="permenant_sub_locality" class="form-control" placeholder="Sub Locality">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Land Mark</label>
-                    <input type="text" name="landmark[]"  value="" id="permenant_land_mark"  class="form-control" placeholder="Land Mark">
+                    <input type="text" required name="landmark[]"  value="" id="permenant_land_mark"  class="form-control" placeholder="Land Mark">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Village</label>
-                    <input type="text" name="village[]"  value="" id="permenant_village"  class="form-control" placeholder="Village">
+                    <input type="text" required name="village[]"  value="" id="permenant_village"  class="form-control" placeholder="Village">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Post Office <small style="color:red;">*</small></label>
-                    <input type="text" name="post_office[]" value=""  id="permenant_post_office"  class="form-control" placeholder="Post Office">
+                    <input type="text" required name="post_office[]" value=""  id="permenant_post_office"  class="form-control" placeholder="Post Office">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Police Station <small style="color:red;">*</small></label>
-                    <select  name="police_station_id[]" id="permenant_police_station_id"  class="form-control select-search" data-fouc>
+                    <input type="text" name="police_station[]" id="permenant_police_station"  class="form-control" required>
+                    {{-- <select  name="police_station_id[]" id="permenant_police_station_id"  class="form-control select-search" data-fouc>
                         <option selected disabled>Select Police Station</option>
                         @foreach(App\Models\PoliceStation::all() as $police_station)
                         <option value="{{$police_station->id}}">{{$police_station->name}}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Country <small style="color:red;">*</small></label>
-                    <select  name="country_id[]" id="permenant_country_id"  class="form-control select-search" data-fouc>
+                    <select  name="country_id[]" required id="permenant_country_id"  class="form-control select-search" data-fouc>
                         <option selected disabled>Select Country</option>
                         @foreach(App\Models\Country::all() as $country)
                         <option value="{{$country->id}}">{{$country->name}}</option>
@@ -231,7 +230,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>State <small style="color:red;">*</small></label>
-                    <select  name="state_id[]" id="permenant_state_id"  class="form-control select-search" data-fouc>
+                    <select  name="state_id[]" required id="permenant_state_id"  class="form-control select-search" data-fouc>
                         <option selected value="" >Select State</option>
                     </select>
                 </div>
@@ -239,11 +238,11 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Pin Code<small style="color:red;">*</small></label>
-                    <input type="text" name="pin[]" value="" id="permenant_pin" class="form-control" placeholder="Pin Code">
+                    <input type="text" required name="pin[]" value="" id="permenant_pin" class="form-control" placeholder="Pin Code">
                 </div>
             </div>
         </div>
         <div class="text-right" style="margin-top:10px;">
-            <button type="button" id="student-address-create-button" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
+            <button type="submit"  class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
         </div> 
     </form>

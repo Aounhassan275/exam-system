@@ -27,6 +27,7 @@ class StudentProfileAddress extends Model
         'village',
         'post_office',
         'police_station_id',
+        'police_station'
     ];
 
     public function country()

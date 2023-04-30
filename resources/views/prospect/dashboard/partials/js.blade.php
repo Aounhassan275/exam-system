@@ -52,7 +52,7 @@
         })
         .done(function (data) {
             $('#temparory_state_id').empty();
-            $('#temparory_state_id').append('<option selected disabled>Select State</option>');
+            $('#temparory_state_id').append('<option disabled>Select State</option>');
             for (i=0;i<data.length;i++){
                 $('#temparory_state_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
             }
@@ -106,9 +106,19 @@
             $('#permenant_land_mark').val($('#temparory_land_mark').val());
             $('#permenant_village').val($('#temparory_village').val());
             $('#permenant_post_office').val($('#temparory_post_office').val());
-            $('#permenant_police_station_id').val($('#temparory_police_station_id').val());
+            $('#permenant_police_station').val($('#temparory_police_station').val());
             $('#permenant_state_id').val($('#temparory_state_id').val());
             $('#permenant_pin').val($('#temparory_pin').val());
+            $('#permenant_premise_name').attr('required',false);
+            $('#permenant_plot_no').attr('required',false);
+            $('#permenant_locality').attr('required',false);
+            $('#permenant_sub_locality').attr('required',false);
+            $('#permenant_land_mark').attr('required',false);
+            $('#permenant_village').attr('required',false);
+            $('#permenant_post_office').attr('required',false);
+            $('#permenant_police_station').attr('required',false);
+            $('#permenant_state_id').attr('required',false);
+            $('#permenant_pin').attr('required',false);
             $('.permenant_fields').hide();
         }else{
             $('#permenant_premise_name').val('');
@@ -118,10 +128,28 @@
             $('#permenant_land_mark').val('');
             $('#permenant_village').val('');
             $('#permenant_post_office').val('');
-            $('#permenant_police_station_id').val('');
+            $('#permenant_police_station').val('');
             $('#permenant_state_id').val('');
             $('#permenant_pin').val('');
+            $('#permenant_premise_name').attr('required',true);
+            $('#permenant_plot_no').attr('required',true);
+            $('#permenant_locality').attr('required',true);
+            $('#permenant_sub_locality').attr('required',true);
+            $('#permenant_land_mark').attr('required',true);
+            $('#permenant_village').attr('required',true);
+            $('#permenant_post_office').attr('required',true);
+            $('#permenant_police_station').attr('required',true);
+            $('#permenant_state_id').attr('required',true);
+            $('#permenant_pin').attr('required',true);
             $('.permenant_fields').show();
+        }
+    });
+    $(document).on('change', '#nationality', function (event) {
+        if($('#nationality').val() == 'Indian'){
+
+            $('.other_nationality').hide();
+        }else{
+            $('.other_nationality').show();
         }
     });
     $('.edit-btn').click(function(){
