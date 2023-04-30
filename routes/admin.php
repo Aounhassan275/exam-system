@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\GradeCategoryController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\PoliceStationController;
+use App\Http\Controllers\Admin\ProspectController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\StudentAttendanceController;
@@ -45,7 +46,10 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     Route::resource('student_profile',StudentProfileController::class);
     /*******************COLLEGE PROFILE ROUTE END*************/         
     Route::resource('student',StudentController::class);
-    /*******************STUDENT ROUTE END*************/       
+    /*******************STUDENT ROUTE END*************/      
+    /*******************PROSPECT ROUTE END*************/     
+    Route::resource('prospect',ProspectController::class);
+    /*******************PROSPECT ROUTE END*************/    
     /*******************TEACHER ROUTE START*************/       
     Route::resource('teacher',TeacherController::class);
     /*******************TEACHER ROUTE END*************/    

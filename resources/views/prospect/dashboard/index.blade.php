@@ -26,7 +26,7 @@
         
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h6 class="card-title">Addmission Form For {{Auth::user()->studentProfile->course->name}}</h6>
+                <h6 class="card-title">Addmission Form {{Auth::user()->studentProfile && Auth::user()->studentProfile->course ?'For '.Auth::user()->studentProfile->course->name:''}}</h6>
                 <div class="header-elements">
                     <div class="list-icons">
                         <a class="list-icons-item" data-action="collapse"></a>
@@ -48,19 +48,33 @@
                 <div class="tab-content">
                     <div @if(@$active_tab == 'registration')  class="tab-pane fade show active" @else class="tab-pane fade" @endif id="top-tab1">
                         <div class="card-body">
-                            @include('prospect.dashboard.partials.registration')
+                            @if(Auth::user()->studentProfile)
+                                @include('prospect.dashboard.partials.registration')
+                            @else 
+                                @include('prospect.dashboard.partials.new_registration')
+                            @endif
                         </div>
                     </div>
                     <div  @if($active_tab == 'basic_information')  class="tab-pane fade show active" @else class="tab-pane fade" @endif id="top-tab2">
                         <div class="card-body">
-                            @include('prospect.dashboard.partials.basic_information')
+                            @if(Auth::user()->studentProfile)
+                                @if(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress())
+                                @include('prospect.dashboard.partials.basic_information')
+                                @else 
+                                @include('prospect.dashboard.partials.new_basic_information')
+                                @endif
+                            @endif
                         </div>
                     </div>
                     <div @if($active_tab == 'academic_qualification')  class="tab-pane fade show active" @else class="tab-pane fade" @endif id="top-tab3">
-                            @include('prospect.dashboard.partials.academic_qualification')
+                        @if(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress())
+                        @include('prospect.dashboard.partials.academic_qualification')
+                        @endif
                     </div>
                     <div @if($active_tab == 'documents_uploaded')  class="tab-pane fade show active" @else class="tab-pane fade" @endif class="tab-pane fade" id="top-tab4">
+                        @if(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress() && Auth::user()->studentAcademicQualifications->count() > 0)
                         @include('prospect.dashboard.partials.documents_uploaded')
+                        @endif
                     </div>
 
                     <div @if($active_tab == 'payment_of_fees')  class="tab-pane fade show active" @else class="tab-pane fade" @endif id="top-tab5">

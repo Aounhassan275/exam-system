@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Prospect;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentCategory;
 use App\Models\StudentDocument;
+use App\Models\StudentProfile;
 use App\Models\StudentProfileAddress;
 use Exception;
 use Illuminate\Http\Request;
@@ -23,6 +24,12 @@ class DashboardController extends Controller
         $studentProfile = Auth::user()->studentProfile;
         $studentProfile->update($request->all());
         toastr()->success('Student Profile Updated successfully');
+        return redirect()->back(); 
+    }
+    public function studentProfileCreate(Request $request)
+    {
+        StudentProfile::create($request->all());
+        toastr()->success('Student Profile Store successfully');
         return redirect()->back(); 
     }
     public function studentAddressUpdate(Request $request)
@@ -47,6 +54,32 @@ class DashboardController extends Controller
             ]);
         }
         toastr()->success('Student Profile Address Updated successfully');
+        return redirect()->back(); 
+    }
+    public function studentAddressCreate(Request $request)
+    {
+        $studentProfile = Auth::user()->studentProfile;
+        $studentProfile->update($request->all());
+        foreach($request->premise_name as $key => $premise_name)
+        {
+            StudentProfileAddress::create([
+                'premise_name' => @$premise_name,
+                'plot_no' => @$request->plot_no[$key],
+                'type' => @$request->type[$key],
+                'locality' => @$request->locality[$key],
+                'sub_locality' => @$request->sub_locality[$key],
+                'landmark' => @$request->landmark[$key],
+                'village' => @$request->village[$key],
+                'post_office' => @$request->post_office[$key],
+                'police_station_id' => @$request->police_station_id[$key],
+                'country_id' => @$request->country_id[$key],
+                'state_id' => @$request->state_id[$key],
+                'pin' => @$request->pin[$key],
+                'student_profile_id' => @$studentProfile->id,
+                'user_id' => Auth::user()->id,
+            ]);
+        }
+        toastr()->success('Student Profile Address Stored successfully');
         return redirect()->back(); 
     }
     public function studentDocumentUpdate(Request $request)

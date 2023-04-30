@@ -72,7 +72,9 @@
 								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
 							<p  class="text-center">Want To Register with the University?</p>
-							<a href="{{url('register')}}"><button type="button" class="btn btn-primary btn-block">Register Now <i class="icon-circle-right2 ml-2"></i></button></a>							
+							<a href="{{url('register')}}"><button type="button" class="btn btn-primary btn-block">Register Now <i class="icon-circle-right2 ml-2"></i></button></a>	
+							<p  class="text-center">Register as Prospect?</p>
+							<a href="{{url('prospect/register')}}"><button type="button" class="btn btn-primary btn-block">Register Prospect Now <i class="icon-circle-right2 ml-2"></i></button></a>							
 						</div>
 					</div>
 				</form>
