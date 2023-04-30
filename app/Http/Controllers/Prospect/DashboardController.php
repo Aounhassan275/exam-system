@@ -62,6 +62,14 @@ class DashboardController extends Controller
         $studentProfile->update($request->all());
         foreach($request->premise_name as $key => $premise_name)
         {
+            if($request->same_as_temparory && $key == 1)
+            {
+                $country_id = $request->country_id[0];
+                $state_id = $request->state_id[0];
+            }else{
+                $country_id = $request->country_id[$key];
+                $state_id = $request->state_id[$key];
+            }
             StudentProfileAddress::create([
                 'premise_name' => @$premise_name,
                 'plot_no' => @$request->plot_no[$key],
@@ -72,8 +80,8 @@ class DashboardController extends Controller
                 'village' => @$request->village[$key],
                 'post_office' => @$request->post_office[$key],
                 'police_station_id' => @$request->police_station_id[$key],
-                'country_id' => @$request->country_id[$key],
-                'state_id' => @$request->state_id[$key],
+                'country_id' => @$country_id,
+                'state_id' => @$state_id,
                 'pin' => @$request->pin[$key],
                 'student_profile_id' => @$studentProfile->id,
                 'user_id' => Auth::user()->id,

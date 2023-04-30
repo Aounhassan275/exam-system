@@ -42,6 +42,11 @@ class AuthController extends Controller
                 toastr()->success('You Login Successfully');
                 return redirect()->intended(route('admin.dashboard.index'));
             }
+            else if($user->role->name == 'Prospect')
+            {
+                toastr()->success('You Login Successfully');
+                return redirect()->intended(route('prospect.dashboard.index'));
+            }
             else  if($user->is_verified && $user->is_active)
             {
                 toastr()->success('You Login Successfully');
@@ -52,10 +57,6 @@ class AuthController extends Controller
                 else if($user->role->name == 'College')
                 {
                     return redirect()->intended(route('college.dashboard.index'));
-                }
-                else if($user->role->name == 'Prospect')
-                {
-                    return redirect()->intended(route('prospect.dashboard.index'));
                 }
                 else
                 {

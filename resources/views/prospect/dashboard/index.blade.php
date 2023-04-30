@@ -49,7 +49,7 @@
                     <div @if(@$active_tab == 'registration')  class="tab-pane fade show active" @else class="tab-pane fade" @endif id="top-tab1">
                         <div class="card-body">
                             @if(Auth::user()->studentProfile)
-                                @include('prospect.dashboard.partials.registration')
+                                {{-- @include('prospect.dashboard.partials.registration') --}}
                             @else 
                                 @include('prospect.dashboard.partials.new_registration')
                             @endif
@@ -59,7 +59,7 @@
                         <div class="card-body">
                             @if(Auth::user()->studentProfile)
                                 @if(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress())
-                                @include('prospect.dashboard.partials.basic_information')
+                                {{-- @include('prospect.dashboard.partials.basic_information') --}}
                                 @else 
                                 @include('prospect.dashboard.partials.new_basic_information')
                                 @endif
