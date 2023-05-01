@@ -17,6 +17,7 @@ Prospects
                     <th>Verified</th>
                     <th>Status</th>
                     <th>Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +42,10 @@ Prospects
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('admin.prospect.show',$prospect->id)}}" class="btn btn-primary btn-sm">Show</a>
+                        <a href="{{route('admin.prospect.edit',$prospect->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                    </td>
+                    <td>
+                        <a href="{{route('admin.prospect.show',$prospect->id)}}" class="btn btn-info btn-sm">Show Application</a>
                     </td>
                 </tr>
                 @endforeach

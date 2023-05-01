@@ -49,7 +49,8 @@ class ProspectController extends Controller
     public function show($id)
     {
         $prospect = User::find($id);
-        return view('admin.prospect.show',compact('prospect'));
+        $active_tab = 'registration';
+        return view('admin.prospect.show',compact('prospect','active_tab'));
     }
 
     /**
@@ -58,9 +59,10 @@ class ProspectController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $prospect = User::find($id);
+        return view('admin.prospect.edit',compact('prospect'));
     }
 
     /**

@@ -12,8 +12,10 @@ class DocumentCategory extends Model
     
     protected $guarded = [];
 
-    public function document()
+    public function document($user_id = null)
     {
-        return StudentDocument::where('user_id',Auth::user()->id)->where('document_category_id',$this->id)->first();
+        if(!$user_id)
+            $user_id = Auth::user()->id;
+        return StudentDocument::where('user_id',$user_id)->where('document_category_id',$this->id)->first();
     }
 }
