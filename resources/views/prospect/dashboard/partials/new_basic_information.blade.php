@@ -1,6 +1,6 @@
 
-<form id="studentAddressCreateForm" action="{{route('prospect.dashboard.student_address_create')}}" method="POST">
-    @csrf
+{{-- <form id="studentAddressCreateForm" action="{{route('prospect.dashboard.student_address_create')}}" method="POST">
+    @csrf --}}
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -54,7 +54,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Nationality</label>
-                    <select  name="nationality" id="nationality"  class="form-control select-search" data-fouc>
+                    <select  name="nationality" id="nationality"  class="form-control" >
                         <option disabled>Select Nationality</option>
                         <option selected value="Indian">Indian</option>
                         <option  value="Others">Others</option>
@@ -134,7 +134,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Country <small style="color:red;">*</small></label>
-                    <select  name="country_id[]" required id="temparory_country_id"  class="form-control select-search" data-fouc>
+                    <select  name="country_id[]" required id="temparory_country_id"  class="form-control">
                         <option selected disabled>Select Country</option>
                         @foreach(App\Models\Country::all() as $country)
                         <option value="{{$country->id}}">{{$country->name}}</option>
@@ -145,7 +145,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>State <small style="color:red;">*</small></label>
-                    <select  name="state_id[]" id="temparory_state_id" required class="form-control select-search" data-fouc>
+                    <select  name="state_id[]" id="temparory_state_id" required class="form-control" >
                     </select>
                 </div>
             </div>
@@ -219,7 +219,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Country <small style="color:red;">*</small></label>
-                    <select  name="country_id[]" required id="permenant_country_id"  class="form-control select-search" data-fouc>
+                    <select  name="country_id[]" required id="permenant_country_id"  class="form-control" >
                         <option selected disabled>Select Country</option>
                         @foreach(App\Models\Country::all() as $country)
                         <option value="{{$country->id}}">{{$country->name}}</option>
@@ -230,7 +230,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>State <small style="color:red;">*</small></label>
-                    <select  name="state_id[]" required id="permenant_state_id"  class="form-control select-search" data-fouc>
+                    <select  name="state_id[]" required id="permenant_state_id"  class="form-control">
                         <option selected value="" >Select State</option>
                     </select>
                 </div>
@@ -242,7 +242,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-right" style="margin-top:10px;">
+        {{-- <div class="text-right" style="margin-top:10px;">
             <button type="submit"  class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
-        </div> 
-    </form>
+        </div>  --}}
+    {{-- </form> --}}

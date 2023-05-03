@@ -16,6 +16,7 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::post('dashboard/student_address_create',[DashboardController::class,'studentAddressCreate'])->name('dashboard.student_address_create');  
     Route::post('dashboard/student_address_update',[DashboardController::class,'studentAddressUpdate'])->name('dashboard.student_address_update');  
     Route::post('dashboard/student_document_update',[DashboardController::class,'studentDocumentUpdate'])->name('dashboard.student_document_update');  
+    Route::post('dashboard/get_qualification_fields',[DashboardController::class,'getQualificationFields'])->name('dashboard.get_qualification_fields');  
     Route::get('dashboard/download_document/{id}',[DashboardController::class,'downloadFile'])->name('dashboard.download_document');
     /*******************DASHBOARD ROUTE END*************/ 
     Route::resource('academic_qualification',StudentAcademicQualificationController::class);

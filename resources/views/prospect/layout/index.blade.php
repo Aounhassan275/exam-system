@@ -46,6 +46,7 @@
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/dashboard.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_wizard.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/wizards/steps.min.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/plugins/forms/validation/validate.min.js')}}"></script>
 
 	<!-- /theme JS files -->
 	

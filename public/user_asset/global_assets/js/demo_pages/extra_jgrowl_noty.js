@@ -92,8 +92,8 @@ var NotyJgrowl = function() {
                     }),
 
                     Noty.button('Submit <i class="icon-paperplane ml-2"></i>', 'btn bg-blue ml-1', function () {
-                            alert('Submitted!');
-                            notyConfirm.close();
+                        $('#studentApplicationData').submit();
+                        notyConfirm.close();
                         },
                         {id: 'button1', 'data-status': 'ok'}
                     )

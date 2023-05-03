@@ -1,37 +1,32 @@
-<div class="row">
-    <div class="col-md-12">
-        <table class="table datatable-save-state">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Document</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (App\Models\DocumentCategory::all()  as $key => $category)
-                <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$category->name}}</td>
-                    <td>
-                        @if($category->document())                 
-                            <a href="{{route('prospect.dashboard.download_document',$category->document()->id)}}" target="_blank" class="nav-link">
-                                <i class="icon-download"></i>
-                                Download Document
-                            </a>
-                        @else 
-                            <span class="badge badge-danger">Pending</span>
-                        @endif
-                    </td>
-                    <td>
-                        <button data-toggle="modal" data-target="#editDocumentCategoryModal" 
-                            id="{{$category->id}}" class="edit-document-btn btn btn-primary">{{$category->document()?'Edit':'Upload'}}</button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
 
+<div class="row">
+    <div class="form-group col-md-1">
+        #
     </div>
-</div>
+    <div class="form-group col-md-4">
+        Name
+    </div>
+    <div class="form-group col-md-3">
+        Document Type
+    </div>
+    <div class="form-group col-md-4">
+        Document
+    </div>
+</div>      
+<div class="row">
+    @foreach (App\Models\DocumentCategory::all()  as $key => $category)
+    <div class="form-group col-md-1">
+        {{$key+1}}
+    </div>
+    <div class="form-group col-md-4">
+        {{$category->name}} <span style="color:red;">@if($category->is_required) Required* @endif</span>
+        <input type="hidden" name="document_category_id[]" value="{{$category->id}}" class="form-control" required >
+    </div>
+    <div class="form-group col-md-3">
+        {{$category->file_type}}
+    </div>
+    <div class="form-group col-md-4">
+        <input type="file"  name="file[]" class="form-control" @if($category->is_required) required @endif >
+    </div>
+    @endforeach
+</div>  

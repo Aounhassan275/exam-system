@@ -184,4 +184,28 @@
     $('#student-address-create-button').click(function(){
         $('#studentAddressCreateForm').submit();
     });
+    $(document).ready(function(){
+        var key_value = 1;
+        $('.add-more-fields').click(function(){
+            $.ajax({
+                url: "{{route('prospect.dashboard.get_qualification_fields')}}",
+                method: 'post',
+                data: {
+                    key : key_value,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(response){
+                    key_value = key_value + 1;
+                    $('#academic_qualification_fields').append(response.html);
+                }
+            });
+        });
+    });
+    
+    function removeFields(index)
+    {
+        $('#remove-'+index).remove();
+    }
 </script>

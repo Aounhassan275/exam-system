@@ -1,36 +1,6 @@
-<div class="row">
-    <div class="form-group col-12  text-right">
-        <button type="button" class="btn btn-success add-more-fields">Add More Fields</button>
-    </div>
-</div>
-<div class="row">
+<div class="row" id="remove-{{$key}}">
     <div class="form-group col-md-1">
-        
-    </div>
-    <div class="form-group col-md-2">
-        Name of Examination
-    </div>
-    <div class="form-group col-md-2">
-        Name of Board
-    </div>
-    <div class="form-group col-md-2">
-        School / College Last Attended
-    </div>
-    <div class="form-group col-md-1">
-        Year Of Passing
-    </div>
-    <div class="form-group col-md-1">
-        Total Marks
-    </div>
-    <div class="form-group col-md-1">
-        Marks
-    </div>
-    <div class="form-group col-md-1">
-        Percentage
-    </div>
-</div>      
-<div class="row">
-    <div class="form-group col-md-1">
+        <button type="button"  class="btn btn-sm btn-danger" onclick="removeFields('{{ @$key }}')">Remove</button>
     </div>
     <div class="form-group col-md-2">
         <input type="text" name="name_of_exam[]" class="form-control" required >
@@ -54,7 +24,4 @@
     <div class="form-group col-md-1">
         <input type="text" name="percentage[]" class="form-control" required value="">
     </div>
-</div>  
-<div id="academic_qualification_fields">
-    
-</div>    
+</div>
