@@ -64,13 +64,13 @@
             <div class="col-md-2 other_nationality" style="display:none;">
                 <div class="form-group">
                     <label>Other Nationality 1</label>
-                    <input type="text" value="{{Auth::user()->studentProfile->other_nationality_1}}" name="other_nationality_1" class="form-control" placeholder="Other Nationality" class="">  
+                    <input type="text" value="" name="other_nationality_1" class="form-control" placeholder="Other Nationality" class="">  
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Mother Tongue</label>
-                    <input type="text" required name="mother_tongue"  value="{{Auth::user()->studentProfile->mother_tongue}}"class="form-control" placeholder="Mother Tongue" class="">  
+                    <input type="text" required name="mother_tongue"  value=""class="form-control" placeholder="Mother Tongue" class="">  
                 </div>
             </div>
         </div>
