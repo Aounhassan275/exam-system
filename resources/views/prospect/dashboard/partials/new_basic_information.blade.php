@@ -6,9 +6,9 @@
                 <div class="form-group">
                     <label>Gender</label>
                     <br>
-                    <input type="radio" @if(Auth::user()->studentProfile->gender == "Male") checked @endif name="gender"  value="Male" class=""> Male 
-                    <input type="radio" @if(Auth::user()->studentProfile->gender == "Female") checked @endif  name="gender" value="Female" class=""> Female 
-                    <input type="radio" @if(Auth::user()->studentProfile->gender == "Sehmale") checked @endif  name="gender" value="Sehmale" class=""> Sehmale 
+                    <input type="radio" checked  name="gender"  value="Male" class=""> Male 
+                    <input type="radio" name="gender" value="Female" class=""> Female 
+                    <input type="radio" name="gender" value="Sehmale" class=""> Sehmale 
                 
                 </div>
             </div>
@@ -16,39 +16,39 @@
                 <div class="form-group">
                     <label>Caste</label>
                     <br>
-                    <input type="radio" name="caste" @if(Auth::user()->studentProfile->caste == "General") checked @endif  value="General" class=""> General 
-                    <input type="radio" name="caste" @if(Auth::user()->studentProfile->caste == "SC") checked @endif value="SC" class=""> SC 
-                    <input type="radio" name="caste" @if(Auth::user()->studentProfile->caste == "ST") checked @endif value="ST" class=""> ST 
-                    <input type="radio" name="caste" @if(Auth::user()->studentProfile->caste == "OBC") checked @endif value="OBC" class=""> OBC 
-                    <input type="radio" name="caste" @if(Auth::user()->studentProfile->caste == "SEBC") checked @endif value="SEBC" class=""> SEBC 
-                    <input type="radio" name="caste" @if(Auth::user()->studentProfile->caste == "EWS") checked @endif value="EWS" class=""> EWS 
+                    <input type="radio" name="caste" checked  value="General" class=""> General 
+                    <input type="radio" name="caste" value="SC" class=""> SC 
+                    <input type="radio" name="caste" value="ST" class=""> ST 
+                    <input type="radio" name="caste" value="OBC" class=""> OBC 
+                    <input type="radio" name="caste" value="SEBC" class=""> SEBC 
+                    <input type="radio" name="caste" value="EWS" class=""> EWS 
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Persons With Disability</label>
                     <br>
-                    <input type="radio" @if(Auth::user()->studentProfile->persons_with_disability == 1) checked @endif  name="persons_with_disability" value="1" class=""> Yes 
-                    <input type="radio" @if(Auth::user()->studentProfile->persons_with_disability != 1) checked @endif name="persons_with_disability" value="0" class=""> No 
+                    <input type="radio" name="persons_with_disability" value="1" class=""> Yes 
+                    <input type="radio" checked name="persons_with_disability" value="0" class=""> No 
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Ex-service Man</label>
                     <br>
-                    <input type="radio" @if(Auth::user()->studentProfile->ex_service_man == 1) checked @endif name="ex_service_man" value="1" class=""> Yes 
-                    <input type="radio" @if(Auth::user()->studentProfile->ex_service_man != 1) checked @endif  name="ex_service_man" value="0" class=""> No 
+                    <input type="radio" name="ex_service_man" value="1" class=""> Yes 
+                    <input type="radio" checked name="ex_service_man" value="0" class=""> No 
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Religion</label>
                     <br>
-                    <input type="radio" name="religion" @if(Auth::user()->studentProfile->religion == 'Hindu') checked @endif value="Hindu" class=""> Hindu  
-                    <input type="radio" name="religion" @if(Auth::user()->studentProfile->religion == 'Muslim') checked @endif value="Muslim" class=""> Muslim 
-                    <input type="radio" name="religion" @if(Auth::user()->studentProfile->religion == 'Christian') checked @endif value="Christian" class=""> Christian 
-                    <input type="radio" name="religion" @if(Auth::user()->studentProfile->religion == 'Sikh') checked @endif value="Sikh" class=""> Sikh 
-                    <input type="radio" name="religion" @if(Auth::user()->studentProfile->religion == 'Others') checked @endif value="Others" class=""> Others 
+                    <input type="radio" name="religion" checked value="Hindu" class=""> Hindu  
+                    <input type="radio" name="religion" value="Muslim" class=""> Muslim 
+                    <input type="radio" name="religion" value="Christian" class=""> Christian 
+                    <input type="radio" name="religion" value="Sikh" class=""> Sikh 
+                    <input type="radio" name="religion" value="Others" class=""> Others 
                 </div>
             </div>
             <div class="col-md-2">
