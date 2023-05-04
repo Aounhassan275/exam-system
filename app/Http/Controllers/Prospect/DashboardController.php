@@ -74,13 +74,13 @@ class DashboardController extends Controller
         }
         foreach($request->document_category_id as $category_index => $document_category_id)
         {
-            if($request->file[$category_index])
+            if($request->file[$category_index] != null)
             {
-                StudentDocument::create([
-                    'document_category_id' => @$document_category_id,
-                    'document' => @$request->file[$category_index],
-                    'user_id' => Auth::user()->id,
-                ]);
+                // StudentDocument::create([
+                //     'document_category_id' => @$document_category_id,
+                //     'document' => @$request->file[$category_index],
+                //     'user_id' => Auth::user()->id,
+                // ]);
             }
         }
         toastr()->success('Student Application Store successfully');

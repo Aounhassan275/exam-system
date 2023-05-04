@@ -26,6 +26,17 @@
     <div class="col-md-12">
         
         <div class="card">
+            @if(Auth::user()->studentProfile)
+            <div class="card-body">
+                <div class="media mb-0">
+                    <div class="media-body">
+                        <h6 class="font-weight-semibold mb-0 text-center">
+                            Your application is submitted!
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            @else
             <form id="studentApplicationData" class="wizard-form steps-validation" method="post" action="{{route('prospect.dashboard.student_profile_create')}}" data-fouc>
                 @csrf
                 <h6>Registration</h6>
@@ -49,6 +60,7 @@
                     @include('prospect.dashboard.partials.payment_of_fees')
                 </fieldset>
             </form>
+            @endif
         </div>
     </div>
 </div>
