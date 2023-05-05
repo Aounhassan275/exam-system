@@ -14,6 +14,8 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::post('dashboard/student_profile_create',[DashboardController::class,'studentProfileCreate'])->name('dashboard.student_profile_create');  
     Route::post('dashboard/student_profile_update',[DashboardController::class,'studentProfileUpdate'])->name('dashboard.student_profile_update');  
     Route::post('dashboard/student_address_create',[DashboardController::class,'studentAddressCreate'])->name('dashboard.student_address_create');  
+    Route::post('dashboard/student_qualification_create',[DashboardController::class,'studentQualificationCreate'])->name('dashboard.student_qualification_create');  
+    Route::post('dashboard/student_document_create',[DashboardController::class,'studentDocumentCreate'])->name('dashboard.student_document_create');  
     Route::post('dashboard/student_address_update',[DashboardController::class,'studentAddressUpdate'])->name('dashboard.student_address_update');  
     Route::post('dashboard/student_document_update',[DashboardController::class,'studentDocumentUpdate'])->name('dashboard.student_document_update');  
     Route::post('dashboard/get_qualification_fields',[DashboardController::class,'getQualificationFields'])->name('dashboard.get_qualification_fields');  

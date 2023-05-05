@@ -1,6 +1,6 @@
 
-{{-- <form id="studentProfileCreateForm" action="{{route('prospect.dashboard.student_profile_create')}}" method="POST">
-    @csrf --}}
+<form id="studentProfileCreateForm" action="{{route('prospect.dashboard.student_profile_create')}}" method="POST">
+    @csrf
     <p>Candidate's Name</p>
     <div class="row">
         <div class="col-md-4">
@@ -94,7 +94,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <select  name="day" class="form-control" required>
+                        <select  name="day" class="form-control select-search" required>
                             <option disabled>DD</option>
                             @for($day = 1;$day <= 31;$day++)
                             <option value="{{$day}}">{{$day}}</option>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <select  name="month" class="form-control" required>
+                        <select  name="month" class="form-control select-search" required>
                             <option  value="" selected disabled>MM</option>
                             @for($month = 1;$month <= 12;$month++)
                             <option value="{{$month}}">{{$month}}</option>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <select   name="year" class="form-control" required>
+                        <select   name="year" class="form-control select-search" required>
                             <option value="" selected disabled>YYYY</option>
                             @for($year = 1980;$year <= 2015;$year++)
                             <option value="{{$year}}">{{$year}}</option>
@@ -169,8 +169,8 @@
             </div>
         </div> --}}
     </div>
-    {{-- <div class="text-right" style="margin-top:10px;">
+    <div class="text-right" style="margin-top:10px;">
         <button type="submit" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
     </div> 
 
-</form> --}}
+</form>
