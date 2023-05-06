@@ -53,7 +53,7 @@ class DashboardController extends Controller
                 'landmark' => @$request->landmark[$key],
                 'village' => @$request->village[$key],
                 'post_office' => @$request->post_office[$key],
-                'police_station_id' => @$request->police_station_id[$key],
+                'police_station' => @$request->police_station[$key],
                 'country_id' => @$request->country_id[$key],
                 'state_id' => @$request->state_id[$key],
                 'pin' => @$request->pin[$key],
@@ -107,8 +107,7 @@ class DashboardController extends Controller
         foreach($request->name_of_exam as $index => $name_of_exam)
         {
             StudentAcademicQualification::create([
-                'premise_name' => @$name_of_exam,
-                'name_of_board' => @$request->name_of_board[$index],
+                'name_of_exam' => @$name_of_exam,
                 'name_of_board' => @$request->name_of_board[$index],
                 'attended_school' => @$request->attended_school[$index],
                 'passing_year' => @$request->passing_year[$index],
@@ -117,6 +116,42 @@ class DashboardController extends Controller
                 'percentage' => @$request->percentage[$index],
                 'user_id' => Auth::user()->id,
             ]);
+        }
+        Auth::user()->update([
+            'steps' => Auth::user()->steps + 1
+        ]);
+        toastr()->success('Student Qualification Stored successfully');
+        return redirect()->back(); 
+    }
+    public function studentQualificationUpdate(Request $request)
+    {
+        foreach($request->name_of_exam as $index => $name_of_exam)
+        {
+            if($request->qualification_id[$index])
+            { 
+                $qualification = StudentAcademicQualification::find($request->qualification_id[$index]);
+                $qualification->update([
+                    'name_of_exam' => @$name_of_exam,
+                    'name_of_board' => @$request->name_of_board[$index],
+                    'attended_school' => @$request->attended_school[$index],
+                    'passing_year' => @$request->passing_year[$index],
+                    'total_marks' => @$request->total_marks[$index],
+                    'marks' => @$request->marks[$index],
+                    'percentage' => @$request->percentage[$index],
+                ]);
+
+            }else{    
+                StudentAcademicQualification::create([
+                    'name_of_exam' => @$name_of_exam,
+                    'name_of_board' => @$request->name_of_board[$index],
+                    'attended_school' => @$request->attended_school[$index],
+                    'passing_year' => @$request->passing_year[$index],
+                    'total_marks' => @$request->total_marks[$index],
+                    'marks' => @$request->marks[$index],
+                    'percentage' => @$request->percentage[$index],
+                    'user_id' => Auth::user()->id,
+                ]);
+            }
         }
         Auth::user()->update([
             'steps' => Auth::user()->steps + 1
@@ -175,29 +210,51 @@ class DashboardController extends Controller
     public function studentDocumentUpdate(Request $request)
     {
         try{
-            if($request->document_category_id == '1' || $request->document_category_id == '2' || $request->document_category_id == '3' )
+            $files = $request->file('document');
+            foreach($request->document_category_id as $index => $document_category_id)
             {
-                $this->validate($request,[
-                    'document' => 'required|image',
-                    'user_id' => 'required',
-                    'document_category_id' => 'required'
-                ]);
-
-            }else{
-                $this->validate($request,[
-                    'document' => 'required|mimes:pdf|max:30000',
-                    'user_id' => 'required',
-                    'document_category_id' => 'required'
-                ]);
-
+                if(array_key_exists($index, $files))
+                {
+                    if($document_category_id == '1' || $document_category_id == '2' || $document_category_id == '3' )
+                    {
+                       if($files[$index]->extension() != 'png' && $files[$index]->extension() != 'jpeg' && $files[$index]->extension() != 'jpg' )
+                       {
+                            toastr()->error("The document must be image type");
+                            return back();
+                       }
+    
+                    }else{
+                        if($files[$index]->extension() != 'pdf')
+                        {
+                            toastr()->error("The document must be pdf type");
+                            return back();
+                        }
+    
+                    }
+                }
             }
-            $category = DocumentCategory::find($request->document_category_id);
-            if($category->document())
+            foreach($request->document_category_id as $category_index => $document_category_id)
             {
-                $document = $category->document();
-                $document->update($request->all());
-            }else{
-                StudentDocument::create($request->all());
+                if(array_key_exists($category_index, $files))
+                {
+                    $category = DocumentCategory::find($document_category_id);
+                    if($category->document())
+                    {
+                        $document = $category->document();
+                        $document->update([
+                            'document_category_id' => @$document_category_id,
+                            'document' => @$request->document[$category_index],
+                            'user_id' => Auth::user()->id,
+                        ]);
+                    }else{
+                        StudentDocument::create([
+                            'document_category_id' => @$document_category_id,
+                            'document' => @$request->document[$category_index],
+                            'user_id' => Auth::user()->id,
+                        ]);
+                    }
+                }
+                    
             }
             Auth::user()->update([
                 'steps' => Auth::user()->steps + 1
@@ -222,6 +279,16 @@ class DashboardController extends Controller
         $html = view('prospect.dashboard.partials.academic_qualification_fields', compact('key'))->render();
         return response([
             'html' => $html,
+        ], 200);
+    }
+    public function getBackSteps()
+    {
+        
+        Auth::user()->update([
+            'steps' => Auth::user()->steps - 1
+        ]);
+        return response([
+            'success' => true,
         ], 200);
     }
 }

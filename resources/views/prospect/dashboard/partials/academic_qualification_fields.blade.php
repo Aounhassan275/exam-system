@@ -1,4 +1,5 @@
 <div class="row" id="remove-{{$key}}">
+    <input type="hidden" name="qualification_id[]" value="">
     <div class="form-group col-md-1">
         <button type="button"  class="btn btn-sm btn-danger" onclick="removeFields('{{ @$key }}')">Remove</button>
     </div>

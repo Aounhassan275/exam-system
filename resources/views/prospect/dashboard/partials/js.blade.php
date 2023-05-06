@@ -99,7 +99,7 @@
     });
     $(document).on('change', '#same_as_temparory', function (event) {
         if(this.checked){
-            $('#permenant_premise_name').val($('#temporary_premise_name').val());
+            $('#permenant_premise_name').val($('#temparory_premise_name').val());
             $('#permenant_plot_no').val($('#temparory_plot_no').val());
             $('#permenant_locality').val($('#temparory_locality').val());
             $('#permenant_sub_locality').val($('#temparory_sub_locality').val());
@@ -183,6 +183,18 @@
     });
     $('#student-address-create-button').click(function(){
         $('#studentAddressCreateForm').submit();
+    });
+    $('#student-address-button').click(function(){
+        $('#studentAddressUpdateForm').submit();
+    });
+    $('#back-button').click(function(){
+        $.ajax({
+            url: "{{route('prospect.dashboard.get_back_steps')}}",
+            method: 'GET',
+            success: function(response){
+                location.reload();
+            }
+        });
     });
     $(document).ready(function(){
         var key_value = 1;

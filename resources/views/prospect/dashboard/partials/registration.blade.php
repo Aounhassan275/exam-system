@@ -179,7 +179,7 @@
         </div> --}}
     </div>
     <div class="text-right" style="margin-top:10px;">
-        <button type="button" id="student-profile-button" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
+        <button type="button" id="student-profile-button" class="btn btn-primary">Save Changes & Next <i class="icon-paperplane ml-2"></i></button>
     </div> 
 
 </form>

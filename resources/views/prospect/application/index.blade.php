@@ -20,7 +20,7 @@
             
     </div>
 </div>
-@if(Auth::user()->steps == 5)
+@if(Auth::user()->steps == 6)
 <div class="row">
     <div class="col-md-12">
         
@@ -58,11 +58,15 @@
                             @endif
                         @endif
                     @elseif(Auth::user()->steps == 3)
-                        @if(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress())
+                        @if(Auth::user()->studentAcademicQualifications->count() > 0)
+                            @include('prospect.dashboard.partials.academic_qualification_update')
+                        @elseif(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress())
                             @include('prospect.dashboard.partials.academic_qualification')
                         @endif
                     @elseif(Auth::user()->steps == 4)
-                        @if(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress() && Auth::user()->studentAcademicQualifications->count() > 0)
+                        @if(Auth::user()->studentDocuments->count() > 0)
+                            @include('prospect.dashboard.partials.documents_uploaded_update')
+                        @elseif(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress() && Auth::user()->studentAcademicQualifications->count() > 0)
                             @include('prospect.dashboard.partials.documents_uploaded')
                         @endif
                     @elseif(Auth::user()->steps == 5)

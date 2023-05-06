@@ -80,25 +80,25 @@
             <input type="hidden" name="type[]" value="Temparory">
             <div class="form-group">
                 <label>Holding No. / Premise's Name</label>
-                <input type="text" required value="" name="premise_name[]" id="temporary_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
+                <input type="text" required value="" name="premise_name[]" id="temparory_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Plot No.</label>
-                <input type="text" required name="plot_no[]" value="" id="temporary_plot_no" class="form-control" placeholder="Plot No.">
+                <input type="text" required name="plot_no[]" value="" id="temparory_plot_no" class="form-control" placeholder="Plot No.">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Locality <small style="color:red;">*</small></label>
-                <input type="text" required name="locality[]" value="" id="temporary_locality" class="form-control" placeholder="Locality">
+                <input type="text" required name="locality[]" value="" id="temparory_locality" class="form-control" placeholder="Locality">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Sub Locality</label>
-                <input type="text" required name="sub_locality[]" value="" id="temporary_sub_locality" class="form-control" placeholder="Sub Locality">
+                <input type="text" required name="sub_locality[]" value="" id="temparory_sub_locality" class="form-control" placeholder="Sub Locality">
             </div>
         </div>
         <div class="col-md-4">

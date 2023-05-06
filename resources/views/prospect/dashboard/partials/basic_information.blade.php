@@ -84,25 +84,25 @@
             <input type="hidden" name="type[]" value="Temparory">
             <div class="form-group">
                 <label>Holding No. / Premise's Name</label>
-                <input type="text" value="{{Auth::user()->studentTemparoryAddress()->premise_name}}" name="premise_name[]" id="temporary_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
+                <input type="text" value="{{Auth::user()->studentTemparoryAddress()->premise_name}}" name="premise_name[]" id="temparory_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Plot No.</label>
-                <input type="text" name="plot_no[]" value="{{Auth::user()->studentTemparoryAddress()->plot_no}}" id="temporary_plot_no" class="form-control" placeholder="Plot No.">
+                <input type="text" name="plot_no[]" value="{{Auth::user()->studentTemparoryAddress()->plot_no}}" id="temparory_plot_no" class="form-control" placeholder="Plot No.">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Locality <small style="color:red;">*</small></label>
-                <input type="text" name="locality[]" value="{{Auth::user()->studentTemparoryAddress()->locality}}" id="temporary_locality" class="form-control" placeholder="Locality">
+                <input type="text" name="locality[]" value="{{Auth::user()->studentTemparoryAddress()->locality}}" id="temparory_locality" class="form-control" placeholder="Locality">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Sub Locality</label>
-                <input type="text" name="sub_locality[]" value="{{Auth::user()->studentTemparoryAddress()->sub_locality}}" id="temporary_sub_locality" class="form-control" placeholder="Sub Locality">
+                <input type="text" name="sub_locality[]" value="{{Auth::user()->studentTemparoryAddress()->sub_locality}}" id="temparory_sub_locality" class="form-control" placeholder="Sub Locality">
             </div>
         </div>
         <div class="col-md-4">
@@ -126,12 +126,13 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Police Station <small style="color:red;">*</small></label>
-                <select  name="police_station_id[]" id="temparory_police_station_id"  class="form-control select-search" data-fouc>
+                <input type="text"  name="police_station[]" value="{{Auth::user()->studentTemparoryAddress()->police_station}}"  id="temparory_police_station" class="form-control" required>
+                {{-- <select  name="police_station_id[]" id="temparory_police_station_id"  class="form-control select-search" data-fouc>
                     <option selected disabled>Select Police Station</option>
                     @foreach(App\Models\PoliceStation::all() as $police_station)
                     <option @if(Auth::user()->studentTemparoryAddress()->police_station_id == $police_station->id) selected @endif value="{{$police_station->id}}">{{$police_station->name}}</option>
                     @endforeach
-                </select>
+                </select> --}}
             </div>
         </div>
         <div class="col-md-4">
@@ -212,12 +213,13 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Police Station <small style="color:red;">*</small></label>
-                <select  name="police_station_id[]" id="permenant_police_station_id"  class="form-control select-search" data-fouc>
+                <input type="text"  name="police_station[]" value="{{Auth::user()->studentPermenantAddress()->police_station}}"  id="permenant_police_station" class="form-control" required>
+                {{-- <select  name="police_station_id[]" id="permenant_police_station_id"  class="form-control select-search" data-fouc>
                     <option selected disabled>Select Police Station</option>
                     @foreach(App\Models\PoliceStation::all() as $police_station)
                     <option @if(Auth::user()->studentPermenantAddress()->police_station_id == $police_station->id) selected @endif  value="{{$police_station->id}}">{{$police_station->name}}</option>
                     @endforeach
-                </select>
+                </select> --}}
             </div>
         </div>
         <div class="col-md-4">
@@ -247,6 +249,7 @@
         </div>
     </div>
     <div class="text-right" style="margin-top:10px;">
-        <button type="button" id="student-address-button" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
+        <button type="button" id="back-button" class="btn btn-info">Back <i class="icon-paperplane ml-2"></i></button>
+        <button type="button" id="student-address-button" class="btn btn-primary">Save Changes & Next <i class="icon-paperplane ml-2"></i></button>
     </div> 
 </form>
