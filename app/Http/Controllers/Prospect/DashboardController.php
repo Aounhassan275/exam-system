@@ -17,7 +17,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('prospect.application.index');
+        return view('prospect.dashboard.index_testing');
     }
     public function studentProfileUpdate(Request $request)
     {
@@ -31,13 +31,88 @@ class DashboardController extends Controller
     }
     public function studentProfileCreate(Request $request)
     {
-        StudentProfile::create($request->all());
-        Auth::user()->update([
-            'steps' => Auth::user()->steps + 1
-        ]);
+        $studentProfile = StudentProfile::create($request->all());
+        foreach($request->premise_name as $key => $premise_name)
+        {
+            if($request->same_as_temparory && $key == 1)
+            {
+                $country_id = $request->country_id[0];
+                $state_id = $request->state_id[0];
+            }else{
+                $country_id = $request->country_id[$key];
+                $state_id = $request->state_id[$key];
+            }
+            StudentProfileAddress::create([
+                'premise_name' => @$premise_name,
+                'plot_no' => @$request->plot_no[$key],
+                'type' => @$request->type[$key],
+                'locality' => @$request->locality[$key],
+                'sub_locality' => @$request->sub_locality[$key],
+                'landmark' => @$request->landmark[$key],
+                'village' => @$request->village[$key],
+                'post_office' => @$request->post_office[$key],
+                'police_station' => @$request->police_station[$key],
+                'country_id' => @$country_id,
+                'state_id' => @$state_id,
+                'pin' => @$request->pin[$key],
+                'student_profile_id' => @$studentProfile->id,
+                'user_id' => Auth::user()->id,
+            ]);
+        }
+        foreach($request->name_of_exam as $index => $name_of_exam)
+        {
+            StudentAcademicQualification::create([
+                'name_of_exam' => @$name_of_exam,
+                'name_of_board' => @$request->name_of_board[$index],
+                'attended_school' => @$request->attended_school[$index],
+                'passing_year' => @$request->passing_year[$index],
+                'total_marks' => @$request->total_marks[$index],
+                'marks' => @$request->marks[$index],
+                'percentage' => @$request->percentage[$index],
+                'user_id' => Auth::user()->id,
+            ]);
+        }
+        $files = $request->file('document');
+        foreach($request->document_category_id as $category_index => $document_category_id)
+        {
+            if(array_key_exists($category_index, $files))
+            {
+                if($document_category_id == '1' || $document_category_id == '2' || $document_category_id == '3' )
+                {
+                    if($files[$category_index]->extension() == 'png' || $files[$category_index]->extension() == 'jpeg' || $files[$category_index]->extension() == 'jpg' )
+                    {
+                        StudentDocument::create([
+                            'document_category_id' => @$document_category_id,
+                            'document' => @$request->document[$category_index],
+                            'user_id' => Auth::user()->id,
+                        ]);
+                    }
+
+                }else{
+                    if($files[$category_index]->extension() == 'pdf')
+                    {
+                        StudentDocument::create([
+                            'document_category_id' => @$document_category_id,
+                            'document' => @$request->document[$category_index],
+                            'user_id' => Auth::user()->id,
+                        ]);
+                    }
+
+                }
+            }
+        }
         toastr()->success('Student Application Store successfully');
         return redirect()->back(); 
     }
+    // public function studentProfileCreate(Request $request)
+    // {
+    //     StudentProfile::create($request->all());
+    //     Auth::user()->update([
+    //         'steps' => Auth::user()->steps + 1
+    //     ]);
+    //     toastr()->success('Student Application Store successfully');
+    //     return redirect()->back(); 
+    // }
     public function studentAddressUpdate(Request $request)
     {
         $studentProfile = Auth::user()->studentProfile;

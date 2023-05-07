@@ -1,6 +1,6 @@
 
-<form id="studentProfileCreateForm" action="{{route('prospect.dashboard.student_profile_create')}}" method="POST">
-    @csrf
+{{-- <form id="studentProfileCreateForm" action="{{route('prospect.dashboard.student_profile_create')}}" method="POST">
+    @csrf --}}
     <p>Candidate's Name</p>
     <div class="row">
         <div class="col-md-4">
@@ -169,8 +169,8 @@
             </div>
         </div> --}}
     </div>
-    <div class="text-right" style="margin-top:10px;">
+    {{-- <div class="text-right" style="margin-top:10px;">
         <button type="submit" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
     </div> 
 
-</form>
+</form> --}}
