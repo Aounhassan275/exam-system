@@ -33,6 +33,7 @@
                         <h6 class="font-weight-semibold mb-0 text-center">
                             Your application is submitted!
                         </h6>
+                        <a href="{{route('prospect.dashboard.generate_pdf')}}" class="btn btn-primary text-right">Download PDF</a>
                     </div>
                 </div>
             </div>

@@ -22,6 +22,7 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::post('dashboard/get_qualification_fields',[DashboardController::class,'getQualificationFields'])->name('dashboard.get_qualification_fields');  
     Route::get('dashboard/get_back_steps',[DashboardController::class,'getBackSteps'])->name('dashboard.get_back_steps');  
     Route::get('dashboard/download_document/{id}',[DashboardController::class,'downloadFile'])->name('dashboard.download_document');
+    Route::get('generate_pdf', [DashboardController::class, 'generateApllicationForm'])->name('dashboard.generate_pdf');
     /*******************DASHBOARD ROUTE END*************/ 
     Route::resource('academic_qualification',StudentAcademicQualificationController::class);
 });

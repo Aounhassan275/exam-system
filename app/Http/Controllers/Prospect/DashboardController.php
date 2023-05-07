@@ -12,7 +12,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class DashboardController extends Controller
 {
     public function index()
@@ -366,4 +366,12 @@ class DashboardController extends Controller
             'success' => true,
         ], 200);
     }
+
+    public function generateApllicationForm(Request $request){
+        // retreive all records from db
+        $pdf = PDF::loadView('prospect.application.pdf_form');
+        // download PDF file with download method
+        return $pdf->stream(Auth::user()->name.'.pdf');
+    }
+
 }
