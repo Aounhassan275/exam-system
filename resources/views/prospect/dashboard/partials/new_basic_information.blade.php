@@ -123,7 +123,7 @@
             <div class="form-group">
                 <label>Police Station <small style="color:red;">*</small></label>
                 <input type="text"  name="police_station[]" id="temparory_police_station" class="form-control" required>
-                {{-- <select  name="police_station[]" id="temparory_police_station_id"  class="form-control select-search" data-fouc>
+                {{-- <select  name="police_station[]" id="temparory_police_station_id"  class="form-control " data-fouc>
                     <option selected disabled>Select Police Station</option>
                     @foreach(App\Models\PoliceStation::all() as $police_station)
                     <option value="{{$police_station->id}}">{{$police_station->name}}</option>
@@ -208,7 +208,7 @@
             <div class="form-group">
                 <label>Police Station <small style="color:red;">*</small></label>
                 <input type="text" name="police_station[]" id="permenant_police_station"  class="form-control" required>
-                {{-- <select  name="police_station_id[]" id="permenant_police_station_id"  class="form-control select-search" data-fouc>
+                {{-- <select  name="police_station_id[]" id="permenant_police_station_id"  class="form-control " data-fouc>
                     <option selected disabled>Select Police Station</option>
                     @foreach(App\Models\PoliceStation::all() as $police_station)
                     <option value="{{$police_station->id}}">{{$police_station->name}}</option>
