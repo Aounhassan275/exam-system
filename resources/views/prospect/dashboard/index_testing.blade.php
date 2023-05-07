@@ -37,7 +37,7 @@
                 </div>
             </div>
             @else
-            <form id="studentApplicationData" class="wizard-form steps-validation" method="post" action="{{route('prospect.dashboard.student_profile_create')}}" data-fouc>
+            <form id="studentApplicationData"  enctype="multipart/form-data"  class="wizard-form steps-validation" method="post" action="{{route('prospect.dashboard.student_profile_create')}}" data-fouc>
                 @csrf
                 <h6>Registration</h6>
                 <fieldset>

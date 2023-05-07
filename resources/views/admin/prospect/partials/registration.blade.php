@@ -155,7 +155,7 @@
                 <input type="text" name="aadhar_no" class="form-control" value="{{$prospect->studentProfile->aadhar_no}}"  placeholder="Aadhar No.">
             </div>
         </div>
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <div class="form-group">
                 <label>Security Question</label>
                 <select  name="security_question" class="form-control select-search" data-fouc>
@@ -164,7 +164,7 @@
                     <option @if($prospect->studentProfile->security_question == 'Name of Your First School') selected @endif  value="Name of Your First School">Name of Your First School</option>
                 </select>
             </div>
-        </div>
+        </div> --}}
         {{-- <div class="col-md-3">
             <div class="form-group">
                 <label>Password</label>
