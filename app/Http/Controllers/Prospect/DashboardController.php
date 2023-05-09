@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Prospect;
 
+use App\Helpers\PaymentGateway;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentCategory;
+use App\Models\PaymentHistory;
 use App\Models\StudentAcademicQualification;
 use App\Models\StudentDocument;
 use App\Models\StudentProfile;
@@ -13,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Log;
+
 class DashboardController extends Controller
 {
     public function index()
@@ -101,6 +105,7 @@ class DashboardController extends Controller
                 }
             }
         }
+        PaymentGateway::proccess();
         toastr()->success('Student Application Store successfully');
         return redirect()->back(); 
     }
@@ -275,7 +280,7 @@ class DashboardController extends Controller
                 'steps' => Auth::user()->steps + 1
             ]);
             toastr()->success('Student Document Stored successfully');
-            return redirect()->back(); 
+            return redirect()->route('prospect.payment.process'); 
         }catch (Exception $e)
         {
             toastr()->error($e->getMessage());
@@ -373,5 +378,54 @@ class DashboardController extends Controller
         // download PDF file with download method
         return $pdf->stream(Auth::user()->name.'.pdf');
     }
+    
+    public function payment_callback(Request $request){
+        $merchant_id = env('MERCHANT_ID');
+        $merchant_sub_id = env('MERCHANT_SUB_ID');
+        $sign_key = env('SIGN_KEY');
+        $encryption_key = hash('sha256', env('ENCRYPTION_KEY'), true);
+        $encryption_iv = env('ENCRYPTION_IV');
 
+        $responsejson = $request->resjson;
+        Log::info("txninit response received : ".$responsejson);
+        $decodedVal = json_decode($responsejson);
+        $retData = $decodedVal->data;
+        $res = PaymentGateway::pkcs5_unpad(openssl_decrypt ( base64_decode($retData) , 'AES-256-CBC' , $encryption_key ,OPENSSL_RAW_DATA | OPENSSL_NO_PADDING, $encryption_iv));
+        Log::info(" txninit service response after decryption: ".$res);
+        $decodedData = json_decode($res);
+        if(property_exists($decodedData,"errorcd")){
+            $errorcd = $decodedData->errorcd;
+        }
+        
+        if(isset($errorcd) && $errorcd != NULL){
+            Log::error("Server error ! Please contact your website Administrator! Error Code : ".$errorcd);
+        }else{
+            $trackid = $decodedData->trackid;  //ensure to save in db
+            $txnstatus = $decodedData->txnstatus; //ensure to save in db
+            $merchanttxnid = $decodedData->merchanttxnid;
+            if($trackid!=NULL)
+            {
+                PaymentHistory::where('user_id',$decodedData->udf1)->update([
+                    'track_id'   => $trackid,
+                    'status' => $txnstatus,
+                    'updated_at' => date("Y-m-d H:i:s"),
+                ]);
+                if($txnstatus=="SUCCESS"){
+                    Log::info("Txn is Successfull !");
+                    toastr()->success('Payment Successfull.');
+                    return redirect()->route("prospect.dashboard.index");
+                }else if($txnstatus=="FAILURE"){
+                    Log::info("Txn has failed !");
+                    toastr()->error('Transaction Failed.');
+                    return redirect()->route("prospect.dashboard.index");
+                }else if($txnstatus=="AWAITED"){
+                    Log::info("Txn status is awaited ! Please check after some time !");
+                    toastr()->info('Transaction status is awaited ! Please check after some time !');
+                    return redirect()->route("prospect.dashboard.index");
+                }
+            }
+        }
+        toastr()->error('Something Went Wrong.');
+        return redirect()->route("prospect.dashboard.index");
+    }
 }

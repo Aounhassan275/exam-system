@@ -23,6 +23,8 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::get('dashboard/get_back_steps',[DashboardController::class,'getBackSteps'])->name('dashboard.get_back_steps');  
     Route::get('dashboard/download_document/{id}',[DashboardController::class,'downloadFile'])->name('dashboard.download_document');
     Route::get('generate_pdf', [DashboardController::class, 'generateApllicationForm'])->name('dashboard.generate_pdf');
+    Route::post('payment_callback', [DashboardController::class, 'payment_callback'])->name('dashboard.payment_callback');
+    Route::view('payment/process','prospect.application.payment')->name('payment.process');
     /*******************DASHBOARD ROUTE END*************/ 
     Route::resource('academic_qualification',StudentAcademicQualificationController::class);
 });

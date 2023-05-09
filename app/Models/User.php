@@ -74,6 +74,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(StudentProfileAddress::class);
     }
+    public function payments()
+    {
+        return $this->hasMany(StudentProfileAddress::class);
+    }
     public function studentDocuments()
     {
         return $this->hasMany(StudentDocument::class);
@@ -81,6 +85,11 @@ class User extends Authenticatable
     public function studentPermenantAddress()
     {
         return StudentProfileAddress::where('user_id',$this->id)->where('type','Permenant')->first();
+    }
+    public function studentPaymentLastest()
+    {
+        $history  =PaymentHistory::where('user_id',$this->id)->orderBy('id','DESC')->first();
+        return $history;
     }
     public function studentTemparoryAddress()
     {
