@@ -107,7 +107,7 @@ class DashboardController extends Controller
         }
         PaymentGateway::proccess();
         toastr()->success('Student Application Store successfully');
-        return redirect()->back(); 
+        return redirect()->route('prospect.payment.process'); 
     }
     // public function studentProfileCreate(Request $request)
     // {
