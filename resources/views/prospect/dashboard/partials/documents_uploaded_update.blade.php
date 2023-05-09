@@ -1,5 +1,5 @@
-<form id="studentDoncumentUpdateForm" enctype="multipart/form-data"  action="{{route('prospect.dashboard.student_document_update')}}" method="POST">
-    @csrf
+{{-- <form id="studentDoncumentUpdateForm" enctype="multipart/form-data"  action="{{route('prospect.dashboard.student_document_update')}}" method="POST">
+    @csrf --}}
     <div class="row">
         <div class="form-group col-md-1">
             #
@@ -41,12 +41,12 @@
         </div>
         <div class="form-group col-md-3">
 
-            <input type="file"  name="document[]" class="form-control" @if($category->is_required) required @endif >
+            {{-- <input type="file"  name="document[]" class="form-control" @if($category->is_required) required @endif > --}}
         </div>
         @endforeach
     </div>   
-    <div class="text-right" style="margin-top:10px;">
+    {{-- <div class="text-right" style="margin-top:10px;">
         <button type="button" id="back-button" class="btn btn-info">Back <i class="icon-paperplane ml-2"></i></button>
         <button type="submit" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
     </div> 
-</form>
+</form> --}}

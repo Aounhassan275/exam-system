@@ -34,6 +34,7 @@
                             Your application is submitted!
                         </h6>
                         <a href="{{route('prospect.dashboard.generate_pdf')}}" class="btn btn-primary text-right">Download PDF</a>
+                        @include('prospect.application.partials.profile_detail')
                     </div>
                 </div>
             </div>

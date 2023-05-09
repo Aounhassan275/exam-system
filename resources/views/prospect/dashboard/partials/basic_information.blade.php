@@ -1,6 +1,6 @@
 
-<form id="studentAddressUpdateForm" action="{{route('prospect.dashboard.student_address_update')}}" method="POST">
-@csrf
+{{-- <form id="studentAddressUpdateForm" action="{{route('prospect.dashboard.student_address_update')}}" method="POST">
+@csrf --}}
     <div class="row">
         <div class="col-md-3">
             <div class="form-group">
@@ -248,8 +248,8 @@
             </div>
         </div>
     </div>
-    <div class="text-right" style="margin-top:10px;">
+    {{-- <div class="text-right" style="margin-top:10px;">
         <button type="button" id="back-button" class="btn btn-info">Back <i class="icon-paperplane ml-2"></i></button>
         <button type="button" id="student-address-button" class="btn btn-primary">Save Changes & Next <i class="icon-paperplane ml-2"></i></button>
     </div> 
-</form>
+</form> --}}
