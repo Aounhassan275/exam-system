@@ -15,7 +15,7 @@ function autoformsubmit()
 </script>
 <body onload="autoformsubmit()">
 
-<form action="{{ env('TXN_INITIATION_URL') }}" method="post" id="form1">
+<form action="{{ config('services.razor_pay.txn_initiation_url') }}" method="post" id="form1">
 	<p id="msg">
 	
 	</p>

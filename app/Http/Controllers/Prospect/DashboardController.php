@@ -380,11 +380,11 @@ class DashboardController extends Controller
     }
     
     public function payment_callback(Request $request){
-        $merchant_id = env('MERCHANT_ID');
-        $merchant_sub_id = env('MERCHANT_SUB_ID');
-        $sign_key = env('SIGN_KEY');
-        $encryption_key = hash('sha256', env('ENCRYPTION_KEY'), true);
-        $encryption_iv = env('ENCRYPTION_IV');
+        $merchant_id = config('services.razor_pay.merchant_id');
+        $merchant_sub_id = config('services.razor_pay.merchant_sub_id');
+        $sign_key = config('services.razor_pay.sign_key');
+        $encryption_key = hash('sha256', config('services.razor_pay.encryption_key'), true);
+        $encryption_iv = config('services.razor_pay.encryption_iv');
 
         $responsejson = $request->resjson;
         Log::info("txninit response received : ".$responsejson);

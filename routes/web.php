@@ -78,7 +78,7 @@ Route::get('cd', function() {
     return 'DONE';
   });
   Route::get('test', function() {
-    dd(env('MERCHANT_ID'));
+    dd(config('services.razor_pay'));
     // PaymentGateway::proccess();		
   });
   Route::get('add_categories', function() {

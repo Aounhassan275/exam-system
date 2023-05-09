@@ -13,13 +13,13 @@ class PaymentGateway
     public static function proccess()
     {
         Log::info("Payment Page initiated");
-        $merchant_id = env('MERCHANT_ID');
-        $merchant_sub_id = env('MERCHANT_SUB_ID');
-        $sign_key = env('SIGN_KEY');
-        $encryption_key = hash('sha256', env('ENCRYPTION_KEY'), true);
-        $encryption_iv = env('ENCRYPTION_IV');
-        $token_generation_url = env('TOKEN_GENERATE_URL');
-        $txn_initiation_url = env('TXN_INITIATION_URL');
+        $merchant_id = config('services.razor_pay.merchant_id');
+        $merchant_sub_id = config('services.razor_pay.merchant_sub_id');
+        $sign_key = config('services.razor_pay.sign_key');
+        $encryption_key = hash('sha256', config('services.razor_pay.encryption_key'), true);
+        $encryption_iv = config('services.razor_pay.encryption_iv');
+        $token_generation_url = config('services.razor_pay.token_generate_url');
+        $txn_initiation_url = config('services.razor_pay.txn_initiation_url');
         $feetype = "ALL FEES";
 
         $merchantreplyurl = "https://atdemo.online/prospect/payment_callback"; # merchant reply url to be replaced here
