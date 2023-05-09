@@ -71,8 +71,15 @@ Route::get('cd', function() {
     Artisan::call('view:clear');
     return 'DONE';
   });
+  Route::get('cache_clear', function() {
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    return 'DONE';
+  });
   Route::get('test', function() {
-    PaymentGateway::proccess();		
+    dd(env('MERCHANT_ID'));
+    // PaymentGateway::proccess();		
   });
   Route::get('add_categories', function() {
     
