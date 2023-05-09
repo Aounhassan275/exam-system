@@ -33,11 +33,13 @@ class PaymentGateway
 
         $decodedData = PaymentGateway::generateToken($encryption_key,$encryption_iv,$sign_key,$merchant_id,$merchant_sub_id,$token_generation_url,$totalamt,$feetype,$merchantreplyurl);
         $tokenId = $decodedData->tokenid; //ensure to save in db
-
+        Log::info("Token Id : ".$tokenId);
         if($tokenId != NULL)
         {
             $txninitfinalString = PaymentGateway::initiateTxn($encryption_key,$encryption_iv,$sign_key,$merchant_id,$merchant_sub_id,$txn_initiation_url,$tokenId,$merchanttxnid,$udf1,$udf2,$udf3,$totalamt,$feetype);
+            Log::info("txninitfinalString : ".print_r($txninitfinalString,1));
         }
+        
         PaymentHistory::create([
             'token_id' => $tokenId,
             'txn_init_final' => $txninitfinalString,
