@@ -126,13 +126,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Police Station <small style="color:red;">*</small></label>
-                <input type="text"  name="police_station[]" value="{{Auth::user()->studentTemparoryAddress()->police_station}}"  id="temparory_police_station" class="form-control" required>
-                {{-- <select  name="police_station_id[]" id="temparory_police_station_id"  class="form-control select-search" data-fouc>
-                    <option selected disabled>Select Police Station</option>
-                    @foreach(App\Models\PoliceStation::all() as $police_station)
-                    <option @if($prospect->studentTemparoryAddress()->police_station_id == $police_station->id) selected @endif value="{{$police_station->id}}">{{$police_station->name}}</option>
-                    @endforeach
-                </select> --}}
+                <input type="text"  name="police_station[]" value="{{$prospect->studentTemparoryAddress()->police_station}}"  id="temparory_police_station" class="form-control" required>
             </div>
         </div>
         <div class="col-md-4">
@@ -213,13 +207,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Police Station <small style="color:red;">*</small></label>
-                <input type="text"  name="police_station[]" value="{{Auth::user()->studentPermenantAddress()->police_station}}"  id="permenant_police_station" class="form-control" required>
-                {{-- <select  name="police_station_id[]" id="permenant_police_station_id"  class="form-control select-search" data-fouc>
-                    <option selected disabled>Select Police Station</option>
-                    @foreach(App\Models\PoliceStation::all() as $police_station)
-                    <option @if($prospect->studentPermenantAddress()->police_station_id == $police_station->id) selected @endif  value="{{$police_station->id}}">{{$police_station->name}}</option>
-                    @endforeach
-                </select> --}}
+                <input type="text"  name="police_station[]" value="{{$prospect->studentPermenantAddress()->police_station}}"  id="permenant_police_station" class="form-control" required>
             </div>
         </div>
         <div class="col-md-4">
