@@ -90,4 +90,22 @@ class ProspectController extends Controller
     {
         //
     }
+    public function statusUpdate(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if($request->status == "Admitted")
+        {
+            $user->update([
+                'role_id' => 3
+            ]);
+            toastr()->success('Prospect Updated to Student successfully');
+        }elseif($request->status == "Rejected")
+        {
+            $user->delete();
+            toastr()->success('Prospect Application Deleted successfully');
+        }else{
+            toastr()->error('Something Went Wrong');
+        }
+        return redirect()->back(); 
+    }
 }

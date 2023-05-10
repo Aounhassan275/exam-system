@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     Route::resource('student',StudentController::class);
     /*******************STUDENT ROUTE END*************/      
     /*******************PROSPECT ROUTE END*************/     
+    Route::post('status_update',[ProspectController::class,'statusUpdate'])->name('prospect.status_update');
     Route::resource('prospect',ProspectController::class);
     /*******************PROSPECT ROUTE END*************/    
     /*******************TEACHER ROUTE START*************/       
