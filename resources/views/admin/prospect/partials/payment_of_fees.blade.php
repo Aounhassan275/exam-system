@@ -11,7 +11,7 @@
         <tr>
             <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->status:'' }}</td>
             <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->track_id:'' }}</td>
-            <td>10</td>
+            <td>1</td>
         </tr>
     </tbody>
 </table>
