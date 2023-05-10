@@ -44,8 +44,8 @@ class StudentProfileAddress extends Model
     {
         return $this->belongsTo(City::class,'city_id');
     }
-    public function police_station()
-    {
-        return $this->belongsTo(PoliceStation::class,'police_station_id');
-    }
+    // public function police_station()
+    // {
+    //     return $this->belongsTo(PoliceStation::class,'police_station_id');
+    // }
 }
