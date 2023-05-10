@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CollegeCourseController;
 use App\Http\Controllers\Admin\CollegeProfileController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\EntranceFeeController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\GradeCategoryController;
 use App\Http\Controllers\Admin\GradeController;
@@ -89,6 +90,9 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','middleware' => 'auth:user','a
     /*******************POLICE STATION ROUTE START*************/       
     Route::resource('police_station',PoliceStationController::class);
     /*******************POLICE STATION  ROUTE END*************/   
+    /*******************ENTRANCE FEE ROUTE START*************/       
+    Route::resource('entrance_fee',EntranceFeeController::class);
+    /*******************ENTRANCE FEE ROUTE END*************/   
 });
 /****************** ADMIN MIDDLEWARE PAGES ROUTES END****************/
 ?>

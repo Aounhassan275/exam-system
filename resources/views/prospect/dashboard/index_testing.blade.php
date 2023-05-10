@@ -26,6 +26,16 @@
     <div class="col-md-12">
         
         <div class="card">
+            <div class="card-header header-elements-inline">
+                <h6 class="card-title">Addmission Form For {{Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_name.' (Fee '.Auth::user()->entrance_fee->exam_fee.' )':''}}</h6>
+                <div class="header-elements">
+                    <div class="list-icons">
+                        <a class="list-icons-item" data-action="collapse"></a>
+                        <a class="list-icons-item" data-action="reload"></a>
+                        <a class="list-icons-item" data-action="remove"></a>
+                    </div>
+                </div>
+            </div>
             @if(Auth::user()->studentProfile)
             <div class="card-body">
                 <div class="media mb-0">

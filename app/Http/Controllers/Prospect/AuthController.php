@@ -20,6 +20,7 @@ class AuthController extends Controller
                 'image' => 'required',
                 'password' => 'required',
                 'role_id' => 'required',
+                'entrance_fee_id' => 'required',
             ]);
             if($request->password != $request->confirm_password)
             {

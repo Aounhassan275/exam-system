@@ -28,7 +28,8 @@ class User extends Authenticatable
         'image',
         'is_verified',
         'is_active',
-        'steps'
+        'steps',
+        'entrance_fee_id'
     ];
 
     /**
@@ -53,6 +54,10 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class,'role_id');
+    }
+    public function entrance_fee()
+    {
+        return $this->belongsTo(EntranceFee::class,'entrance_fee_id');
     }
     public function collegeProfile()
     {
